@@ -1,0 +1,32 @@
+version: '3'
+services:
+  server:
+    build:
+      context: /../../mnt/c/Programming/pet_projects/fictional-employee-db/server/
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - /../../mnt/c/Programming/pet_projects/fictional-employee-db/server/:/app
+      - /../../mnt/c/Programming/pet_projects/fictional-employee-db/server/node_modules
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=${MONGO_URI}
+  client:
+    build:
+      context: /../../mnt/c/Programming/pet_projects/fictional-employee-db/client/
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - /../../mnt/c/Programming/pet_projects/fictional-employee-db/client/:/app
+      - /../../mnt/c/Programming/pet_projects/fictional-employee-db/client/node_modules
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/fictional-employee-db
+volumes:
+  mongo-data:
