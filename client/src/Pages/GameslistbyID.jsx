@@ -10,7 +10,7 @@ const GameslistbyID = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`/games-list/${id}`)
+        fetch(`http://localhost:8080/games-list/${id}`)
             .then(response => response.json())
             .then(data => setDisplayedGame(data))
             .then(setIsLoading(false))

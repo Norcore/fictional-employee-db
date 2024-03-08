@@ -8,7 +8,7 @@ const DivisionDetails = () => {
     const {id} = useParams();
 
     useEffect(() => {
-        fetch(`/api/divisions/${id}/members`)
+        fetch(`http://localhost:8080/api/divisions/${id}/members`)
         .then(response => response.json())
         .then(data => setDisplayedDivision(data))
         .catch(error => console.error("Error while fetching: ", error))

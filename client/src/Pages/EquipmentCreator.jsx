@@ -6,14 +6,14 @@ const EquipmentCreator = () => {
   const [equipmentList, setEquipmentList] = useState([]);
 
   useEffect(() => {
-    fetch("/equipment")
+    fetch("http://localhost:8080/equipment")
       .then((response) => response.json())
       .then((data) => setEquipmentList(data))
       .catch((error) => console.error("Error fetching equipment:", error));
   }, []);
 
   const handleDeleteEquipment = (equipmentId) => {
-    fetch(`/equipment/${equipmentId}`, {
+    fetch(`http://localhost:8080/equipment/${equipmentId}`, {
       method: "DELETE",
     })
       .then(() => {

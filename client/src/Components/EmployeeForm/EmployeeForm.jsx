@@ -56,7 +56,7 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
 
     // PATCH request
     try {
-      const response = await fetch(`/api/employees/${employee._id}`, {
+      const response = await fetch(`http://localhost:8080/api/employees/${employee._id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -109,7 +109,7 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
   // Fetch equipment
   const fetchAvailableEquipment = async () => {
     try {
-      const response = await fetch('/equipment');
+      const response = await fetch('http://localhost:8080/equipment');
       const data = await response.json();
       setAvailableEquipment(data);
     } catch (error) {
@@ -120,7 +120,7 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
   // Fetch brands
   const fetchAvailableBrands = async () => {
     try {
-      const response = await fetch('/brands');
+      const response = await fetch('http://localhost:8080/brands');
       const data = await response.json();
       setAvailableBrands(data);
     } catch (error) {
@@ -132,7 +132,7 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
   // Fetch divisions
   const fetchDivisions = async () => {
     try {
-      const response = await fetch('/api/divisions')
+      const response = await fetch('http://localhost:8080/api/divisions')
       const data = await response.json();
       setAvailableDivisions(data);
 
@@ -143,7 +143,7 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
 
   const fetchGames = async () => {
     try {
-      const response = await fetch('/games-list');
+      const response = await fetch('http://localhost:8080/games-list');
       const data = await response.json();
       setGames(data);
 
@@ -153,7 +153,7 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
   };
 
   const fetchTools = async () => {
-    fetch('/tools')
+    fetch('http://localhost:8080/tools')
     .then(response => response.json())
     .then(data => setTools(data))
     .catch(error => console.error("Failed to fetch tools: ", error))

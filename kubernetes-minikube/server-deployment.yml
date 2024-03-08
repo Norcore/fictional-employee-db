@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: fictional-employee-db-server
-        image: norcore/fictional-employee-db-server:1.0
+        image: norcore/fictional-employee-db-server:1.4
         ports:
         - containerPort: 3001
         env:

@@ -3,7 +3,7 @@ kind: Service
 metadata:
  name: fictional-employee-db-client
 spec:
- type: LoadBalancer
+ type: ClusterIP
  ports:
   - port: 3000
     targetPort: 3000

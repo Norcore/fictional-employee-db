@@ -105,15 +105,15 @@ const EmployeeTable = ({ employees, onDelete, onCheckBoxChange, checkboxToggled,
             <td style={{background: employee.favoriteColor}}>{employee.favGame ? employee.favGame.maxPlayers : ""}</td>
             <td style={{background: employee.favoriteColor}}>
               
-              <Link to={`/update/${employee._id}`}>
+              <Link to={`http://localhost:8080/update/${employee._id}`}>
                 <button type="button">Update</button>
               </Link>
 
-              <Link to={`/kittens/${employee._id}`}>
+              <Link to={`http://localhost:8080/kittens/${employee._id}`}>
                 <button type="button">Kittens</button>
               </Link>
 
-              <Link to={`/employee/${employee._id}/address`}>
+              <Link to={`http://localhost:8080/employee/${employee._id}/address`}>
                 <button type="button">Address</button>
               </Link>
 

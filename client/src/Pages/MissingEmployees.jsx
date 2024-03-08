@@ -4,7 +4,7 @@ const MissingEmployees = () => {
     const [missingEmployees, setMissingEmployees] = useState([]);
 
     useEffect(() => {
-        fetch('/api/employees/missing')
+        fetch('http://localhost:8080/api/employees/missing')
             .then((response) => response.json())
             .then((data) => setMissingEmployees(data))
             .catch((error) => console.error("Error fetching missing employees:", error))

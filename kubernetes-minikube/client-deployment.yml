@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: fictional-employee-db-client
-        image: norcore/fictional-employee-db-client:1.3
+        image: norcore/fictional-employee-db-client:1.8
         ports:
         - containerPort: 3000
