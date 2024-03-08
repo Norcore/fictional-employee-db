@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+ name: fictional-employee-db-server
+spec:
+ selector:
+    app: fictional-employee-db-server
+ ports:
+    - protocol: TCP
+      port: 3001
+      targetPort: 8080
+ type: ClusterIP
