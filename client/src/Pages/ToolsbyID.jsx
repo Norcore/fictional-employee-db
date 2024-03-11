@@ -10,7 +10,7 @@ export const ToolsbyID = () => {
     console.log(id);
 
     useEffect(() => {
-        fetch(`http://localhost:8080/tools/${id}`)
+        fetch(`http://localhost:3001/tools/${id}`)
         .then(response => response.json())
         .then(data => setDisplayedTool(data))
         .catch(error => console.error("Failed to fetch tool: ", error))

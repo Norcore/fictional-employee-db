@@ -14,7 +14,7 @@ const DivisionModel = require('./db/division.model');
 
 
 const MONGO_URI = process.env.MONGO_URI;
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3001;
 
 if (!MONGO_URI) {
   console.error("Missing MONGO_URI environment variable");
@@ -695,7 +695,7 @@ const main = async () => {
 
 
   app.listen(PORT, () => {
-    console.log("App is listening on 8080");
+    console.log("App is listening on 3001");
     console.log("Try /api/employees route right now");
   });
 };

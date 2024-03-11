@@ -8,7 +8,7 @@ const Boardgames = () => {
     const [gamePlayers, setGamePlayers] = useState("");
 
     const addGame = () => {
-        fetch('http://localhost:8080/games', {
+        fetch('http://localhost:3001/games', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -51,7 +51,7 @@ const Boardgames = () => {
                 onChange={handleGamePlayers}></input>
 
             <button type="button" onClick={addGame}>Add Game</button>
-            <Link to='http://localhost:8080/games-list'>
+            <Link to='http://localhost:3001/games-list'>
                 <button type="button">Show Games</button>
             </Link>
         </div>

@@ -5,7 +5,7 @@ const Superheroes = () => {
     const [superheroes, setSuperheroes] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:8080/employees/superheroes`)
+        fetch(`http://localhost:3001/employees/superheroes`)
             .then(res => res.json())
             .then(data => {
                 setSuperheroes(data);

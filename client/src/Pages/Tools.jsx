@@ -11,7 +11,7 @@ const Tools = () => {
 
     // GET request /w filtering
     useEffect(() => {
-        fetch(`http://localhost:8080/tools?filter=${toolFilter}`)
+        fetch(`http://localhost:3001/tools?filter=${toolFilter}`)
             .then(response => response.json())
             .then(data => setAvailableTools(data))
             .catch(error => console.error("Failed to fetch tools: ", error))
@@ -21,7 +21,7 @@ const Tools = () => {
     // POST request
     const addTool = () => {
         try {
-            fetch('http://localhost:8080/tools', {
+            fetch('http://localhost:3001/tools', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ const Tools = () => {
                                 <td>{tool.weight}</td>
 
                                 <td>
-                                    <Link to={`http://localhost:8080/tools/${tool._id}`} >
+                                    <Link to={`http://localhost:3001/tools/${tool._id}`} >
                                         <button type="button">Show More</button>
                                     </Link>
                                 </td>
