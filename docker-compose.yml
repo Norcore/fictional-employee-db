@@ -4,19 +4,7 @@ services:
     image: norcore/fictional-employee-db-server:2.7
     ports:
       - "3001:3001"
-    depends_on:
-      - mongo
-    environment:
-      - MONGO_URI=${MONGO_URI}
   client:
     image: norcore/fictional-employee-db-client:2.0
     ports:
       - "3000:3000"
-  mongo:
-    image: mongo
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/fictional-employee-db
-volumes:
-  mongo-data:
