@@ -7,8 +7,7 @@ pipeline {
                     sh 'npm cache clean --force'
                     sh 'npm install'
                     sh 'npm install react-scripts react-router-dom'
-                    sh 'export CI=false'
-                    sh 'npm run build'
+                    sh 'CI=false npm run build'
                 }
             }
         }
