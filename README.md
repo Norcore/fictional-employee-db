@@ -17,4 +17,4 @@ There are two ways to use this branch:
                     § folder path: client/build/
                     § output folder path: ./
             • post-build actions: 
-        archive the artifacts: build.zip -> saved this locally as well in my sw5/leeroyjenkins project root
+        archive the artifacts: build.zip
