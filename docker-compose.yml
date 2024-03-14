@@ -1,9 +1,5 @@
 version: '3'
 services:
-  server:
-    image: norcore/fictional-employee-db-server:2.7
-    ports:
-      - "3001:3001"
   client:
     image: norcore/fictional-employee-db-client:2.0
     ports:
