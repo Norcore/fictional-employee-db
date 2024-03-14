@@ -1,6 +1,5 @@
 pipeline {
     agent any
-    
     stages {
         stage('Build and Run Container') {
             steps {
@@ -10,7 +9,6 @@ pipeline {
             }
         }
     }
-    
     post {
         always {
             script {
