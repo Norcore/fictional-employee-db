@@ -1,6 +1,5 @@
 pipeline {
     agent any
-    
     stages {
         stage('Install Dependencies') {
             steps {
@@ -14,7 +13,6 @@ pipeline {
             }
         }
     }
-    
     post {
         success {
             archiveArtifacts artifacts: 'client/build/*', allowEmptyArchive: true
