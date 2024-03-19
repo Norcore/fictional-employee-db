@@ -1,7 +1,7 @@
 version: '3'
 services:
   server:
-    image: norcore/fictional-employee-db-server:2.9
+    image: norcore/fictional-employee-db-server:3.0
     ports:
       - "3001:3001"
     depends_on:
@@ -9,7 +9,7 @@ services:
     environment:
       - MONGO_URI=${MONGO_URI}
   client:
-    image: norcore/fictional-employee-db-client:2.5
+    image: norcore/fictional-employee-db-client:2.6
     ports:
       - "3000:3000"
   mongo:
