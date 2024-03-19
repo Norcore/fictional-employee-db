@@ -7,30 +7,30 @@ const Layout = () => (
     <nav>
       <ul>
         <li className="grow">
-          <Link to="/">Employees</Link>
+          <Link to="http://server:3001/">Employees</Link>
         </li>
         <li>
-          <Link to="/create">
+          <Link to="http://server:3001/create">
             <button type="button">Create Employee</button>
           </Link>
 
-          <Link to="/equipment">
+          <Link to="http://server:3001/equipment">
             <button type="button">Manage inventory</button>
           </Link>
 
-          <Link to="/top-paid">
+          <Link to="http://server:3001/top-paid">
             <button type="button">Top-Paid</button>
           </Link>
 
-          <Link to="/tools">
+          <Link to="http://server:3001/tools">
             <button type="button">Tools</button>
           </Link>
 
-          <Link to='/games'>
+          <Link to='http://server:3001/games'>
             <button type="button">Games</button>
           </Link>
 
-          <Link to='/divisions'>
+          <Link to='http://server:3001/divisions'>
             <button type="button">Divisions</button>
           </Link>
 

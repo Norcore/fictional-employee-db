@@ -4,7 +4,7 @@ const TopPaid = () => {
     const [topPaid, setTopPaid] = useState([]);
 
     useEffect(() => {
-        fetch('/top-paid')
+        fetch('http://server:3001/top-paid')
         .then(result => result.json())
         .then(data => setTopPaid(data))
         .catch(error => console.error("Error fetching top paid: ", error))

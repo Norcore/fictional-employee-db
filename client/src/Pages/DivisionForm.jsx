@@ -19,7 +19,7 @@ const DivisionForm = () => {
 
     // Display edited country
     useEffect(() => {
-        fetch(`/api/divisions/${id}`)
+        fetch(`http://server:3001/api/divisions/${id}`)
         .then(response => response.json())
         .then(data => setDisplayedDivision(data))
         .then(setIsLoading(false))
@@ -46,7 +46,7 @@ const DivisionForm = () => {
 
     // Fetch boss candidates
     useEffect(() => {
-        fetch('/api/employees/candidates')
+        fetch('http://server:3001/api/employees/candidates')
             .then(response => response.json())
             .then(data => setAvailableBosses(data))
             .catch(error => console.error("Failed to fetch bosses: ", error))
@@ -66,7 +66,7 @@ const DivisionForm = () => {
         };
 
         try {
-            await fetch(`/api/divisions/${id}`, {
+            await fetch(`http://server:3001/api/divisions/${id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ const DivisionForm = () => {
             });
 
              
-                navigate('/divisions');
+                navigate('http://server:3001/divisions');
             // }
         } catch (error) {
             console.error("Couldn't update division: ", error);

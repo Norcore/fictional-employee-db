@@ -26,7 +26,7 @@ app.use(express.json());
 
 // CORS middleware
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: "http://client:3000",
   methods: ["POST", "PATCH", "GET", "DELETE"],
   preflightContinue: false,
   optionsSuccessStatus: 204,
@@ -695,7 +695,7 @@ const main = async () => {
 
 
   app.listen(PORT, () => {
-    console.log("App is listening on" `${PORT}`);
+    console.log("App is listening on 3001");
     console.log("Try /api/employees route right now");
   });
 };

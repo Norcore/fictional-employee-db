@@ -19,7 +19,7 @@ const EmployeeAddress = () => {
 
 
     useEffect(() => {
-        fetch(`/employee/${id}/address`)
+        fetch(`http://server:3001/employee/${id}/address`)
             .then(response => response.json())
             .then(data => setDisplayedAddress(data))
             .then(setIsLoading(false))
@@ -57,7 +57,7 @@ const EmployeeAddress = () => {
 
 
         try {
-            const response = fetch(`/employee/${id}/address`, {
+            const response = fetch(`http://server:3001/employee/${id}/address`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const EmployeeAddress = () => {
                     address: updatedAddress,
                 }));
                 setIsEditing(false);
-                navigate('/');
+                navigate('http://server:3001/');
             }
 
         } catch (error) {
