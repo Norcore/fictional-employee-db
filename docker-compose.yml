@@ -8,6 +8,10 @@ services:
       - mongo
     environment:
       - MONGO_URI=${MONGO_URI}
+  client:
+    image: norcore/fictional-employee-db-client:1.4
+    ports:
+      - "3000:3000"
   mongo:
     image: mongo
     ports:
