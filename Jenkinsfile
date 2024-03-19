@@ -20,14 +20,14 @@ pipeline {
             steps {
                 dir('client') {
                 sh 'npm install serve'
-                sh 'npx serve -s build -l 5000 &'
+                sh 'npx serve -s build -l &'
                 }
             }
         }
         stage('Test Website') {
             steps {
                 script {
-                    def responseCode = sh(script: 'curl -s -o /dev/null -w "%{http_code}" http://localhost:5000', returnStdout: true).trim()
+                    def responseCode = sh(script: 'curl -s -o /dev/null -w "%{http_code}" http://localhost:3000', returnStdout: true).trim()
                     if (responseCode == '200') {
                         echo 'Website is up!'
                     } else {
