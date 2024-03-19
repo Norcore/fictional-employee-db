@@ -14,19 +14,11 @@ pipeline {
                 }
             }
         }
-        stage('Deploy Backend') {
+        stage('Deploy Backend and Frontend') {
             steps {
                 withCredentials([string(credentialsId: 'fictional-employee-db-mongo-uri', variable: 'MONGO_URI')]) {
                 sh 'docker-compose up -d'
-                }
-            }
-        }
-        stage('Serve Frontend') {
-            steps {
-                dir('client') {
-                sh 'npm install serve'
-                sh 'npx serve -s build -l 3000 &'
-                sh 'sleep 15'
+                sh 'sleep 180'
                 }
             }
         }

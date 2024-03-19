@@ -13,6 +13,9 @@ RUN npm install react-scripts react-router-dom
 # Copy the rest of the application
 COPY . .
 
+RUN npm run build
+RUN npm install serve
+
 EXPOSE  3000
 
-CMD [ "npm", "start"]
+CMD ["npx" "serve", "-s", "build", "-l", "3000", "&"]
