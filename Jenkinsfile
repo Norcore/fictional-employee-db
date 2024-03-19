@@ -24,8 +24,7 @@ pipeline {
                 }
             }
         }
-    }
-    stage('Test Website') {
+        stage('Test Website') {
             steps {
                 script {
                     def responseCode = sh(script: 'curl -s -o /dev/null -w "%{http_code}" http://localhost:5000', returnStdout: true).trim()
@@ -37,6 +36,7 @@ pipeline {
                 }
             }
         }
+    }
     post {
         success {
             archiveArtifacts artifacts: 'client/build/*', allowEmptyArchive: true
