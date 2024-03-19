@@ -13,10 +13,6 @@ pipeline {
         }
         stage('Deploy Frontend') {
             steps {
-                // Clean up the /client/ directory before deployment
-                sh 'rm -rf /client/*'
-                // Create the /client/ directory if it doesn't exist
-                sh 'mkdir -p /client'
                 // Example: Deploy the frontend to a static site hosting service
                 // This is a placeholder and should be replaced with actual deployment commands
                 sh 'cp -r client/build/* /client/'
