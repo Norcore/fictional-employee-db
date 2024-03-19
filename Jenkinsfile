@@ -16,7 +16,9 @@ pipeline {
         }
         stage('Deploy Backend') {
             steps {
+                withCredentials([string(credentialsId: '30bc6247-df28-4684-9743-65a33e92eedc', variable: 'MONGO_URI')]) {
                 sh 'docker-compose up -d'
+                }
             }
         }
         stage('Serve Frontend') {
