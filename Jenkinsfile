@@ -37,7 +37,6 @@ pipeline {
                 }
             }
         }
-    }
     post {
         success {
             archiveArtifacts artifacts: 'client/build/*', allowEmptyArchive: true
