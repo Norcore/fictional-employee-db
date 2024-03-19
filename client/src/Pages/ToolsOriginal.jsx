@@ -8,7 +8,7 @@ const Tools = () => {
   const [toolFilter, setToolFilter] = useState("");
 
   useEffect(() => {
-    fetch(`http://server:3001/tools?filter=${toolFilter}`)
+    fetch(`http://localhost:3001/tools?filter=${toolFilter}`)
       .then(response => response.json())
       .then(data => setAvailableTools(data))
       .catch(error => console.error("Error fetching tools: ", error))
@@ -28,7 +28,7 @@ const Tools = () => {
 
 
   const handleNewTool = () => {
-    fetch('http://server:3001/tools', {
+    fetch('http://localhost:3001/tools', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -79,7 +79,7 @@ const Tools = () => {
         return (
           <li key={tool._id}>
             Name: {tool.name} - Weight: {tool.weight}
-            <Link to={`http://server:3001/tools/${tool._id}`}>
+            <Link to={`http://localhost:3001/tools/${tool._id}`}>
             <button type="button">Show More</button>
             </Link>
           </li>

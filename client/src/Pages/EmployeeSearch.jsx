@@ -6,7 +6,7 @@ const EmployeeSearch = () => {
     const [searchResults, setSearchResults] = useState([]);
 
     useEffect(() => {
-        fetch(`http://server:3001/employees/${search}`)
+        fetch(`http://localhost:3001/employees/${search}`)
             .then((response) => response.json())
             .then((data) => setSearchResults(data))
             .catch((error) => console.error("Error fetching results", error))

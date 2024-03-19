@@ -8,7 +8,7 @@ const Divisions = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://server:3001/api/divisions')
+        fetch('http://localhost:3001/api/divisions')
             .then(response => response.json())
             .then(data => setAvailableDivisions(data))
             .then(setIsLoading(false))
@@ -51,7 +51,7 @@ const Divisions = () => {
 
 
                                 <td>
-                                    <Link to={`http://server:3001/divisions/${division._id}`}>
+                                    <Link to={`http://localhost:3001/divisions/${division._id}`}>
                                         <button type="button">Edit Division</button>
                                     </Link>
 
@@ -59,7 +59,7 @@ const Divisions = () => {
 
 
                                 <td>
-                                <Link to={`http://server:3001/divisions/${division._id}/details`}>
+                                <Link to={`http://localhost:3001/divisions/${division._id}/details`}>
                                     <button type="button">Show more</button>
                                 </Link>
 
@@ -75,7 +75,7 @@ const Divisions = () => {
                 </tbody>
             </table>
 
-            <Link to={'http://server:3001/divisions/create'}>
+            <Link to={'http://localhost:3001/divisions/create'}>
                 <button type="button">Add new division</button>
             </Link>
 

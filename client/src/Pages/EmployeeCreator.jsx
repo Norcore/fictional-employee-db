@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import EmployeeForm from "../Components/EmployeeForm";
 
 const createEmployee = (employee) => {
-  return fetch("http://server:3001/api/employees", {
+  return fetch("http://localhost:3001/api/employees", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -22,13 +22,13 @@ const EmployeeCreator = () => {
     createEmployee(employee)
       .then(() => {
         setLoading(false);
-        navigate("http://server:3001/");
+        navigate("http://localhost:3001/");
       })
   };
 
   return (
     <EmployeeForm
-      onCancel={() => navigate("http://server:3001/")}
+      onCancel={() => navigate("http://localhost:3001/")}
       disabled={loading}
       onSave={handleCreateEmployee}
     />

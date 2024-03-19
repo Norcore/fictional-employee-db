@@ -5,7 +5,7 @@ import EmployeeForm from "../Components/EmployeeForm";
 import Loading from "../Components/Loading";
 
 const updateEmployee = (employee) => {
-  return fetch(`http://server:3001/api/employees/${employee._id}`, {
+  return fetch(`http://localhost:3001/api/employees/${employee._id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -15,7 +15,7 @@ const updateEmployee = (employee) => {
 };
 
 const fetchEmployee = (id) => {
-  return fetch(`http://server:3001/api/employees/${id}`).then((res) => res.json());
+  return fetch(`http://localhost:3001/api/employees/${id}`).then((res) => res.json());
 };
 
 const EmployeeUpdater = () => {
@@ -40,7 +40,7 @@ const EmployeeUpdater = () => {
     updateEmployee(employee)
       .then(() => {
         setUpdateLoading(false);
-        navigate("http://server:3001/");
+        navigate("http://localhost:3001/");
       });
   };
 
@@ -53,7 +53,7 @@ const EmployeeUpdater = () => {
       employee={employee}
       onSave={handleUpdateEmployee}
       disabled={updateLoading}
-      onCancel={() => navigate("http://server:3001/")}
+      onCancel={() => navigate("http://localhost:3001/")}
     />
   );
 };

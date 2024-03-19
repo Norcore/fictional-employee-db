@@ -66,7 +66,7 @@ const EmployeeTable = ({ employees, onDelete, onCheckBoxChange, checkboxToggled,
       await onDelete(employeeId);
       setEmployeeToDelete(employeeId);
       setShowDeleteDialog(false);
-      navigate('http://server:3001/');
+      navigate('http://localhost:3001/');
 
     } catch (error) {
       console.error('Error deleting employee: ', error);
@@ -78,7 +78,7 @@ const EmployeeTable = ({ employees, onDelete, onCheckBoxChange, checkboxToggled,
   const onDeleteCancel = () => {
     setShowDeleteDialog(false);
     setEmployeeToDelete(null);
-    navigate('http://server:3001/');
+    navigate('http://localhost:3001/');
   }
 
 
@@ -105,15 +105,15 @@ const EmployeeTable = ({ employees, onDelete, onCheckBoxChange, checkboxToggled,
             <td style={{background: employee.favoriteColor}}>{employee.favGame ? employee.favGame.maxPlayers : ""}</td>
             <td style={{background: employee.favoriteColor}}>
               
-              <Link to={`http://server:3001/update/${employee._id}`}>
+              <Link to={`http://localhost:3001/update/${employee._id}`}>
                 <button type="button">Update</button>
               </Link>
 
-              <Link to={`http://server:3001/kittens/${employee._id}`}>
+              <Link to={`http://localhost:3001/kittens/${employee._id}`}>
                 <button type="button">Kittens</button>
               </Link>
 
-              <Link to={`http://server:3001/employee/${employee._id}/address`}>
+              <Link to={`http://localhost:3001/employee/${employee._id}/address`}>
                 <button type="button">Address</button>
               </Link>
 
