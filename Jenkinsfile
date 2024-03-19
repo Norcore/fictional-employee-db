@@ -11,14 +11,6 @@ pipeline {
                 }
             }
         }
-        stage('Deploy Frontend') {
-            steps {
-                // Example: Deploy the frontend to a static site hosting service
-                // This is a placeholder and should be replaced with actual deployment commands
-                sh 'cp -r client/build/* /client/'
-                sh 'npm start'
-            }
-        }
         stage('Deploy Backend') {
             steps {
                 // Example: Deploy the backend using Docker Compose
