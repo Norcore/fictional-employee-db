@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        MONGO_URI = credentials('30bc6247-df28-4684-9743-65a33e92eedc')
+        CI = 'false'
     }
     stages {
         stage('Install Dependencies & Build Frontend') {
@@ -10,7 +10,7 @@ pipeline {
                     sh 'npm cache clean --force'
                     sh 'npm install'
                     sh 'npm install react-scripts react-router-dom'
-                    sh 'CI=false npm run build'
+                    sh 'npm run build'
                 }
             }
         }
