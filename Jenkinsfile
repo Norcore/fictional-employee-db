@@ -20,7 +20,8 @@ pipeline {
             steps {
                 dir('client') {
                 sh 'npm install serve'
-                sh 'npx serve -s build -l &'
+                sh 'npx serve -s build -l 3000 &'
+                sh 'sleep 15'
                 }
             }
         }
