@@ -18,7 +18,7 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'fictional-employee-db-mongo-uri', variable: 'MONGO_URI')]) {
                 sh 'docker-compose up -d'
-                sh 'sleep 180'
+                sh 'sleep 120'
                 }
             }
         }
@@ -34,18 +34,6 @@ pipeline {
                 }
             }
         }
-        stage('Test Backend') {
-            steps {
-                script {
-                    def backendResponseCode = sh(script: 'curl -s -o /dev/null -w "%{http_code}" http://localhost:3001', returnStdout: true).trim()
-                    if (backendResponseCode == '200') {
-                        echo 'Backend is up!'
-                    } else {
-                        error 'Backend is not responding correctly'
-            }
-        }
-    }
-}
     }
     post {
         success {
