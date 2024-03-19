@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        MONGO_URI = credentials('30bc6247-df28-4684-9743-65a33e92eedc')
+    }
     stages {
         stage('Install Dependencies & Build Frontend') {
             steps {
@@ -39,7 +42,7 @@ pipeline {
         }
         stage('Test Backend') {
             steps {
-                 script {
+                script {
                     def backendResponseCode = sh(script: 'curl -s -o /dev/null -w "%{http_code}" http://localhost:3001', returnStdout: true).trim()
                     if (backendResponseCode == '200') {
                         echo 'Backend is up!'
