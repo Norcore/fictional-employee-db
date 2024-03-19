@@ -8,8 +8,8 @@ const FavoriteBrandModel = require("../db/favoritebrand.model");
 const BoardgameModel = require("../db/boardgame.model");
 const DivisionModel = require("../db/division.model");
 
-//const MONGO_URI = process.env.MONGO_URI;
-const MONGO_URI = "mongodb://localhost:27017/fictional-employee-db"
+const MONGO_URI = process.env.MONGO_URI;
+//const MONGO_URI = "mongodb://localhost:27017/fictional-employee-db"
 //const MONGO_URI = "mongodb://mongo:27017/fictional-employee-db"
 
 if (!MONGO_URI) {

@@ -13,6 +13,6 @@ RUN npm install dotenv cors mongoose express
 # Copy the rest of the application
 COPY . .
 
-EXPOSE   8080
+EXPOSE 3001
 
 CMD [ "node", "./server.js" ]
