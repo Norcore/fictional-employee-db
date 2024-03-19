@@ -19,7 +19,7 @@ pipeline {
         stage('Serve Frontend') {
             steps {
                 dir('client') {
-                sh 'npm install -g serve'
+                sh 'npm install serve'
                 sh 'serve -s build'
                 }
             }
