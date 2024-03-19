@@ -33,7 +33,7 @@ const EmployeeTable = ({ employees, onDelete, onCheckBoxChange, checkboxToggled,
 
     // Fetching database and passing queries
     const response = await fetch(
-      `http://localhost:8080/api/employees/sorted?position=${filterPosition}&level=${filterLevel}&sortBy=${sortedBy}&sortDir=${sortDirection}`
+      `http://localhost:3001/api/employees/sorted?position=${filterPosition}&level=${filterLevel}&sortBy=${sortedBy}&sortDir=${sortDirection}`
     );
 
     const data = await response.json();
