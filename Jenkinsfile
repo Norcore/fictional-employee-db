@@ -4,15 +4,8 @@ pipeline {
         stage('Build and Run Container') {
             steps {
                 script {
-                    sh 'docker-compose up -d'
+                    sh 'docker-compose up'
                 }
-            }
-        }
-    }
-    post {
-        always {
-            script {
-                sh 'docker-compose down'
             }
         }
     }
