@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Install Dependencies') {
+        stage('Install Dependencies & Build Frontend') {
             steps {
                 dir('client') {
                     sh 'npm cache clean --force'
@@ -13,8 +13,15 @@ pipeline {
         }
         stage('Deploy Backend') {
             steps {
-                // Example: Deploy the backend using Docker Compose
                 sh 'docker-compose up -d'
+            }
+        }
+        stage('Serve Frontend') {
+            steps {
+                dir('client') {
+                sh 'npm install -g serve'
+                sh 'serve -s build'
+                }
             }
         }
     }
