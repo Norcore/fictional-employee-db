@@ -20,7 +20,7 @@ pipeline {
             steps {
                 dir('client') {
                 sh 'npm install serve'
-                sh 'serve -s build'
+                sh 'npx serve -s build'
                 }
             }
         }
