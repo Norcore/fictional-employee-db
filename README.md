@@ -16,6 +16,8 @@ When jenkins is set up and running make sure to create the project as a "pipelin
 
 You will also have to set up the MONGO_URI environment variable under Dashboard -> Manage Jenkins -> Credentials menu, since this is being referenced in the Jenkinsfile, but also the backend and frontend.
 
+In the Jenkinsfile, you will most likely have to edit the URL's in the test stages. I used my host machine's local IP due to how the jenkins container and the pet project's containers use 2 separate networks (this is working due to how the host machine's ports are exposed).
+
 If everything is set up the build, deployment, and db populate stages should all complete without any issues and you should be able to open the webpage at localhost:3000.
 
 
