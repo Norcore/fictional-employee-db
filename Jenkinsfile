@@ -31,7 +31,7 @@ pipeline {
                 stage('Test Website') {
             steps {
                 script {
-                    def responseCode = sh(script: 'curl -s -o /dev/null -w "%{http_code}" http://jenkins-deploy-pipeline_client_1:3000', returnStdout: true).trim()
+                    def responseCode = sh(script: 'curl -s -o /dev/null -w "%{http_code}" http://172.21.0.2:3000', returnStdout: true).trim()
                     if (responseCode == '200') {
                         echo 'Website is up!'
                     } else {
@@ -43,7 +43,7 @@ pipeline {
         stage('Test Backend') {
             steps {
                 script {
-                    def backendResponseCode = sh(script: 'curl -s -o /dev/null -w "%{http_code}" http://jenkins-deploy-pipeline_server_1:3001', returnStdout: true).trim()
+                    def backendResponseCode = sh(script: 'curl -s -o /dev/null -w "%{http_code}" http://172.21.0.4:3001', returnStdout: true).trim()
                     if (backendResponseCode == '200') {
                         echo 'Backend is up!'
                     } else {
