@@ -22,6 +22,12 @@ pipeline {
                 }
             }
         }
+        stage('Populate Database') {
+            steps {
+                 sh 'docker exec jenkins-deploy-pipeline_server_1 node server/populate/populate.js'
+                 sh 'sleep 10'
+            }
+        }
     }
     post {
         success {
