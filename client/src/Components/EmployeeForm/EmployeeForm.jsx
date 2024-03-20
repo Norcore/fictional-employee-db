@@ -256,7 +256,7 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
           name="favoriteColor"
           id="favoriteColor"
           disabled={true}
-          style={{ background: employee.favoriteColor }}
+          style={{ background: employee ? employee.favoriteColor : null }}
         />
       </div>
 
