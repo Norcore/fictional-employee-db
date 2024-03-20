@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
 const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
-  const [name, setName] = useState("");
-  const [level, setLevel] = useState("");
-  const [position, setPosition] = useState("");
-  const [currentSalary, setCurrentSalary] = useState("");
-  const [desiredSalary, setDesiredSalary] = useState("");
-  const [startingDate, setStartingDate] = useState("");
+  const [name, setName] = useState(employee?.name || "");
+  const [level, setLevel] = useState(employee?.level || "");
+  const [position, setPosition] = useState(employee?.position || "");
+  const [currentSalary, setCurrentSalary] = useState(employee?.currentSalary || "");
+  const [desiredSalary, setDesiredSalary] = useState(employee?.desiredSalary || "");
+  const [startingDate, setStartingDate] = useState(employee?.startingDate || "");
 
   const [tools, setTools] = useState([]);
   const [selectedTool, setSelectedTool] = useState([]);
