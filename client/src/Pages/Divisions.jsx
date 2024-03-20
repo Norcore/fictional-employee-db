@@ -51,7 +51,7 @@ const Divisions = () => {
 
 
                                 <td>
-                                    <Link to={`http://localhost:3001/divisions/${division._id}`}>
+                                    <Link to={`http://localhost:3000/divisions/${division._id}`}>
                                         <button type="button">Edit Division</button>
                                     </Link>
 
@@ -59,7 +59,7 @@ const Divisions = () => {
 
 
                                 <td>
-                                <Link to={`http://localhost:3001/divisions/${division._id}/details`}>
+                                <Link to={`http://localhost:3000/divisions/${division._id}/details`}>
                                     <button type="button">Show more</button>
                                 </Link>
 
@@ -75,7 +75,7 @@ const Divisions = () => {
                 </tbody>
             </table>
 
-            <Link to={'http://localhost:3001/divisions/create'}>
+            <Link to={'http://localhost:3000/divisions/create'}>
                 <button type="button">Add new division</button>
             </Link>
 

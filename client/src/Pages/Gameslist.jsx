@@ -38,7 +38,7 @@ export const Gameslist = () => {
                     <tr>
                         <td>{games.name}</td>
                         <td>{games.maxPlayers}</td>
-                        <Link to={`http://localhost:3001/games-list/${games._id}`}>
+                        <Link to={`http://localhost:3000/games-list/${games._id}`}>
                         <button type="button">Show More</button>
                         
                         </Link>

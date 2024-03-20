@@ -40,7 +40,7 @@ const EmployeeUpdater = () => {
     updateEmployee(employee)
       .then(() => {
         setUpdateLoading(false);
-        navigate("http://localhost:3001/");
+        navigate("http://localhost:3000/");
       });
   };
 
@@ -53,7 +53,7 @@ const EmployeeUpdater = () => {
       employee={employee}
       onSave={handleUpdateEmployee}
       disabled={updateLoading}
-      onCancel={() => navigate("http://localhost:3001/")}
+      onCancel={() => navigate("http://localhost:3000/")}
     />
   );
 };

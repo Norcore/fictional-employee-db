@@ -79,7 +79,7 @@ const Tools = () => {
         return (
           <li key={tool._id}>
             Name: {tool.name} - Weight: {tool.weight}
-            <Link to={`http://localhost:3001/tools/${tool._id}`}>
+            <Link to={`http://localhost:3000/tools/${tool._id}`}>
             <button type="button">Show More</button>
             </Link>
           </li>

@@ -76,7 +76,7 @@ const EmployeeAddress = () => {
                     address: updatedAddress,
                 }));
                 setIsEditing(false);
-                navigate('http://localhost:3001/');
+                navigate('http://localhost:3000/');
             }
 
         } catch (error) {

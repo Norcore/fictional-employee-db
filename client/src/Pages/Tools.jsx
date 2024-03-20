@@ -86,7 +86,7 @@ const Tools = () => {
                                 <td>{tool.weight}</td>
 
                                 <td>
-                                    <Link to={`http://localhost:3001/tools/${tool._id}`} >
+                                    <Link to={`http://localhost:3000/tools/${tool._id}`} >
                                         <button type="button">Show More</button>
                                     </Link>
                                 </td>

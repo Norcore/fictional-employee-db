@@ -22,13 +22,13 @@ const EmployeeCreator = () => {
     createEmployee(employee)
       .then(() => {
         setLoading(false);
-        navigate("http://localhost:3001/");
+        navigate("http://localhost:3000/");
       })
   };
 
   return (
     <EmployeeForm
-      onCancel={() => navigate("http://localhost:3001/")}
+      onCancel={() => navigate("http://localhost:3000/")}
       disabled={loading}
       onSave={handleCreateEmployee}
     />

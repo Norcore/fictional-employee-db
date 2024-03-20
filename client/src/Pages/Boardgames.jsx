@@ -51,7 +51,7 @@ const Boardgames = () => {
                 onChange={handleGamePlayers}></input>
 
             <button type="button" onClick={addGame}>Add Game</button>
-            <Link to='http://localhost:3001/games-list'>
+            <Link to='http://localhost:3000/games-list'>
                 <button type="button">Show Games</button>
             </Link>
         </div>

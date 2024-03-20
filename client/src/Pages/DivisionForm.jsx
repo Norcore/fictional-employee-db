@@ -75,7 +75,7 @@ const DivisionForm = () => {
             });
 
              
-                navigate('http://localhost:3001/divisions');
+                navigate('http://localhost:3000/divisions');
             // }
         } catch (error) {
             console.error("Couldn't update division: ", error);
