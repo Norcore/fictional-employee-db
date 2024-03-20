@@ -1,20 +1,28 @@
-This branch is used to build the frontend in Jenkins.
+### This branch is used to build and deploy a fullstack Javascript application in Jenkins.
 
-There are two ways to use this branch:
-    1: containerized version:
-        - for the containerized version use "docker-compose up" as "build step" (execute shell)
-            - if you want your container to immediately shut down and be removed after testing you can also add "docker-compose down" after "docker-compose up"
-    2: non-containerized version:
-        -     • build steps:
-                ○ "execute shell":
-                    § cd client
-                    § npm cache clean --force
-                    § npm install
-                    § npm react-scripts react-router-dom
-                    § export CI=false -> makes it so that jenkins build ignores eslint warnings
-                    § npm run build
-                ○ in a separate build step choose "file operations" (this is a plugin you have to install in jenkins)
-                    § folder path: client/build/
-                    § output folder path: ./
-            • post-build actions: 
-        archive the artifacts: build.zip
+# General information
+
+It utilizes a custom jenkins build (it's the latest official version but I install some dependencies and set some permissions for jenkins user that's created by the official jenkins image), you can find the dockerfile in the jenkins folder.
+
+
+# Docker
+
+I've found attaching the socket to the containerized jenkins pretty handy, so I ran it like this: docker run -d -p 8080:8080 -p 50000:50000 -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home jenkins-with-nodejs
+
+
+# Jenkins 
+
+When jenkins is set up and running make sure to create the project as a "pipeline", and when configuring it specify the repository's branch (jenkins-deploy), as the other branches serve other test or deployment purposes.
+
+You will also have to set up the MONGO_URI environment variable under Dashboard -> Manage Jenkins -> Credentials menu, since this is being referenced in the Jenkinsfile, but also the backend and frontend.
+
+If everything is set up the build, deployment, and db populate stages should all complete without any issues and you should be able to open the webpage at localhost:3000.
+
+
+# Troubleshooting tips
+
+The most problems I've ran into were permission related. If you run into problems make sure to check that the user jenkins has the necessary dir and file permissions (such as ownership of the workspace you're creating, execute permission for docker-compose, etc.).
+
+If during building jenkins runs into permission issues that denies it access to the docker daemon/socket/services you may have to force the 'docker' group inside the jenkins container to have the same ID as the docker group outside the container.
+
+You can check the ID by running this command: cat /etc/group | grep docker
