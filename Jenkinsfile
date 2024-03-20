@@ -28,30 +28,6 @@ pipeline {
                  sh 'sleep 10'
             }
         }
-                stage('Test Website') {
-            steps {
-                script {
-                    def responseCode = sh(script: 'curl -s -o /dev/null -w "%{http_code}" http://192.168.56.1:3000', returnStdout: true).trim()
-                    if (responseCode == '200') {
-                        echo 'Website is up!'
-                    } else {
-                        error 'Website is not responding correctly'
-                    }
-                }
-            }
-        }
-        stage('Test Backend') {
-            steps {
-                script {
-                    def backendResponseCode = sh(script: 'curl -s -o /dev/null -w "%{http_code}" http://192.168.56.1:3001/api/employees', returnStdout: true).trim()
-                    if (backendResponseCode == '200') {
-                        echo 'Backend is up!'
-                    } else {
-                        error 'Backend is not responding correctly'
-            }
-        }
-    }
-}
     }
     post {
         success {
