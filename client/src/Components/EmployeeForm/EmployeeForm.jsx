@@ -240,7 +240,7 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
       <div className="control">
         <label htmlFor="startingDate">Starting Date:</label>
         <input
-          defaultValue={employee.startingDate ? employee.startingDate : null}
+          defaultValue={employee ? employee.startingDate : null}
           name="startingDate"
           id="startingDate"
           disabled={false}
