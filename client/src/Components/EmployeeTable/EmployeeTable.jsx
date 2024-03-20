@@ -23,6 +23,8 @@ const EmployeeTable = ({ employees, onDelete, onCheckBoxChange, checkboxToggled,
   const [employeeToDelete, setEmployeeToDelete] = useState(null);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
+  const { hostname, port } = window.location;
+
   // use effect and fetching
   useEffect(() => {
     fetchSortedEmployees();
@@ -109,7 +111,7 @@ const EmployeeTable = ({ employees, onDelete, onCheckBoxChange, checkboxToggled,
                 <button type="button">Update</button>
               </Link>
 
-              <Link to={`http://localhost:3000/kittens/${employee._id}`}>
+              <Link to={`http://${hostname}:${port}/kittens/${employee._id}`}>
                 <button type="button">Kittens</button>
               </Link>
 
