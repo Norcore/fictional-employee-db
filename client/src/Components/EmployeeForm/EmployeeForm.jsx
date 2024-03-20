@@ -252,7 +252,7 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
       <div className="control">
         <label htmlFor="favoriteColor">Favorite Color:</label>
         <input
-          defaultValue={employee.favoriteColor ? employee.favoriteColor : null}
+          defaultValue={employee ? employee.favoriteColor : null}
           name="favoriteColor"
           id="favoriteColor"
           disabled={true}
@@ -263,7 +263,7 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
       <div className="control">
         <label htmlFor="game">Favorite Game:</label>
         <input
-          defaultValue={employee.favGame ? employee.favGame.name : null}
+          defaultValue={employee ? employee.favGame.name : null}
           name="game"
           id="game"
           disabled={true}
@@ -273,7 +273,7 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
       <div className="control">
         <label htmlFor="division">Division:</label>
         <input
-          defaultValue={employee.division ? employee.division.name : null}
+          defaultValue={employee ? employee.division.name : null}
           name="division"
           id="division"
           disabled={true}
@@ -283,7 +283,7 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
       <div className="control">
         <label htmlFor="tool">Tools:</label>
         <input
-          defaultValue={employee.tools ? employee.tools.map(tool => (
+          defaultValue={employee ? employee.tools.map(tool => (
             tool.name
           )) : null}
           name="tool"
