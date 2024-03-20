@@ -43,7 +43,7 @@ pipeline {
         stage('Test Backend') {
             steps {
                 script {
-                    def backendResponseCode = sh(script: 'curl -s -o /dev/null -w "%{http_code}" http://192.168.56.1:3001', returnStdout: true).trim()
+                    def backendResponseCode = sh(script: 'curl -s -o /dev/null -w "%{http_code}" http://192.168.56.1:3001/api/employees', returnStdout: true).trim()
                     if (backendResponseCode == '200') {
                         echo 'Backend is up!'
                     } else {
