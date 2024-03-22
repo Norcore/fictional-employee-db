@@ -14,7 +14,7 @@ const DivisionModel = require('./db/division.model');
 
 
 const MONGO_URI = process.env.MONGO_URI;
-const BACKEND_URL= process.env.BACKEND_URL;
+const BACKEND_URL= process.env.REACT_APP_BACKEND_URL;
 const PORT = process.env.PORT || 3001;
 
 if (!MONGO_URI) {

@@ -4,7 +4,7 @@ const TopPaid = () => {
     const [topPaid, setTopPaid] = useState([]);
 
     useEffect(() => {
-        fetch(`http://${process.env.BACKEND_URL}/top-paid`)
+        fetch(`http://${process.env.REACT_APP_BACKEND_URL}/top-paid`)
         .then(result => result.json())
         .then(data => setTopPaid(data))
         .catch(error => console.error("Error fetching top paid: ", error))

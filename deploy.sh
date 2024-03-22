@@ -7,6 +7,6 @@ docker pull norcore/fictional-employee-db-server:"${GITHUB_RUN_NUMBER}"
 docker run -d --name fictional-employee-db-server \
            -p 3001:3001 \
            -e MONGO_URI="${MONGO_URI}" \
-           -e FRONTEND_URL="${FRONTEND_URL}" \
-           -e BACKEND_URL="${BACKEND_URL}" \
+           -e REACT_APP_FRONTEND_URL="${REACT_APP_FRONTEND_URL}" \
+           -e REACT_APP_BACKEND_URL="${REACT_APP_BACKEND_URL}" \
            norcore/fictional-employee-db-server:"${GITHUB_RUN_NUMBER}"

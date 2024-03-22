@@ -16,7 +16,7 @@ const EquipmentForm = ({ onSave }) => {
     const equipmentData = { name, type, amount };
 
     try {
-      const response = await fetch(`http://${process.env.BACKEND_URL}/equipment`, {
+      const response = await fetch(`http://${process.env.REACT_APP_BACKEND_URL}/equipment`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -33,7 +33,7 @@ const EquipmentForm = ({ onSave }) => {
 
   const handleShowInventory = async () => {
     try {
-      const response = await fetch(`http://${process.env.BACKEND_URL}/equipment`);
+      const response = await fetch(`http://${process.env.REACT_APP_BACKEND_URL}/equipment`);
       const fetchedInventoryData = await response.json();
       setInventoryData(fetchedInventoryData);
 
@@ -56,7 +56,7 @@ const EquipmentForm = ({ onSave }) => {
   };
 
   const handleDeleteEquipment = (equipmentId) => {
-    fetch(`http://${process.env.BACKEND_URL}/equipment/${equipmentId}`, {
+    fetch(`http://${process.env.REACT_APP_BACKEND_URL}/equipment/${equipmentId}`, {
       method: "DELETE",
     })
       .then(() => {

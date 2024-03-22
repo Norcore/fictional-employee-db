@@ -18,7 +18,7 @@ You will also have to set up the MONGO_URI environment variable under Dashboard 
 
 In the Jenkinsfile, you will most likely have to edit the URL's in the test stages. I used my host machine's local IP due to how the jenkins container and the pet project's containers use 2 separate networks (this is working due to how the host machine's ports are exposed).
 
-If everything is set up the build, deployment, and db populate stages should all complete without any issues and you should be able to open the webpage at process.env.FRONTEND_URL.
+If everything is set up the build, deployment, and db populate stages should all complete without any issues and you should be able to open the webpage at process.env.REACT_APP_FRONTEND_URL.
 
 
 # Troubleshooting tips
