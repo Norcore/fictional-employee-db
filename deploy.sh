@@ -3,7 +3,6 @@ sudo apt update
 sudo apt install -y docker.io
 sudo service docker start
 
-# Add your user to the docker group to run Docker commands without sudo
 sudo usermod -aG docker $USER
 
 # Pull the latest Docker image from your Docker registry
