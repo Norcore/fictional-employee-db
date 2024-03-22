@@ -70,9 +70,14 @@ jobs:
             --port 22 \
             --cidr ${{ steps.ip.outputs.ipv4 }}/32
 
+      - name: Create SSH private key file
+        run: |
+          ssh-keygen -t ed25519 -N "" -f ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+
       - name: SSH into your EC2 and deploy backend
         run: |
-          ssh -i ${{secrets.SSH_KEY}} ec2-user@${{secrets.BACKEND_URL}} 'bash -s' < deploy.sh
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_ed25519 ec2-user@${{ secrets.BACKEND_URL }} 'bash -s' < deploy.sh
 
       - name: Revoke runner IP address
         run: |
