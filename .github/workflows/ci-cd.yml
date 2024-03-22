@@ -75,6 +75,10 @@ jobs:
           echo "${{secrets.SSH_KEY}}" > ssh_key.pem
           chmod 600 ssh_key.pem
 
+      - name: SSH into your EC2 and Configure Dependencies
+        run: |
+          ssh -o StrictHostKeyChecking=no -i ssh_key.pem ec2-user@${{secrets.BACKEND_URL}} 'bash -s' < dependencies.sh
+
       - name: SSH into your EC2 and deploy backend
         run: |
           ssh -o StrictHostKeyChecking=no -i ssh_key.pem ec2-user@${{secrets.BACKEND_URL}} 'bash -s' < deploy.sh
