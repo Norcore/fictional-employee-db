@@ -14,6 +14,7 @@ const DivisionModel = require('./db/division.model');
 
 
 const MONGO_URI = process.env.MONGO_URI;
+const FRONTEND_URL= procecc.env.FRONTEND_URL;
 const PORT = process.env.PORT || 3001;
 
 if (!MONGO_URI) {
@@ -26,7 +27,7 @@ app.use(express.json());
 
 // CORS middleware
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: FRONTEND_URL,
   methods: ["POST", "PATCH", "GET", "DELETE"],
   preflightContinue: false,
   optionsSuccessStatus: 204,

@@ -20,7 +20,17 @@ variable "vpc_id" {
 
 variable "subnet_id_a" {
     type    = string
-    default = "subnet-1981e862"
+    default = "subnet-07b47df7130222066"
+}
+
+variable "subnet_id_b" {
+    type    = string
+    default = "subnet-08d3a85c6a6173953"
+}
+
+variable "subnet_id_c" {
+    type    = string
+    default = "subnet-02ee65aaad7388401"
 }
 
 variable "subnet_a_cidr" {
