@@ -77,7 +77,7 @@ jobs:
 
       - name: SSH into your EC2 and deploy backend
         run: |
-          ssh -o StrictHostKeyChecking=no -i ssh_key.pem ec2-user@${{secrets.BACKEND_URL}} 'bash -s' < deploy.sh
+          ssh -o StrictHostKeyChecking=no -i ssh_key.pem ubuntu@${{secrets.BACKEND_URL}} 'bash -s' < deploy.sh
 
       - name: Revoke runner IP address
         run: |
