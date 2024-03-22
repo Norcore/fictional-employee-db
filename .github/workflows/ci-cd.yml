@@ -64,11 +64,22 @@ jobs:
 
       - name: Whitelist runner IP address
         run: |
-          aws ec2 authorize-security-group-ingress \
+          set -e
+          result=$(aws ec2 describe-security-group-rules \
             --group-id ${{secrets.AWS_EC2_SG}} \
             --protocol tcp \
             --port 22 \
-            --cidr ${{ steps.ip.outputs.ipv4 }}/32
+            --query "SecurityGroupRules[?CidrIp == '${{ steps.ip.outputs.ipv4 }}/32' && FromPort == '22']" \
+            --output text)
+          if [ -z "$result" ]; then
+            aws ec2 authorize-security-group-ingress \
+              --group-id ${{secrets.AWS_EC2_SG}} \
+              --protocol tcp \
+              --port 22 \
+              --cidr ${{ steps.ip.outputs.ipv4 }}/32
+          else
+            echo "Security group rule already exists, skipping..."
+          fi
 
       - name: Create SSH private key file
         run: |
