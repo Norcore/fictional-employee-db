@@ -81,11 +81,8 @@ jobs:
 
       - name: SSH into your EC2 and Deploy Backend
         run: |
-          cat << EOF | ssh -o StrictHostKeyChecking=no -i ssh_key.pem ubuntu@${{secrets.BACKEND_URL}} 'bash -s'
-          export GITHUB_RUN_NUMBER="${{ github.run_number }}"
-          bash deploy.sh
-          EOF
-          
+          ssh -vvv -o StrictHostKeyChecking=no -o SendEnv=GITHUB_RUN_NUMBER -i ssh_key.pem ubuntu@${{secrets.BACKEND_URL}} 'bash -s' < deploy.sh
+
       - name: Revoke runner IP address
         run: |
           aws ec2 revoke-security-group-ingress \
