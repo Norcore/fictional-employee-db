@@ -42,14 +42,11 @@ jobs:
           docker build -t norcore/fictional-employee-db-client:${GITHUB_RUN_NUMBER} .
           docker push norcore/fictional-employee-db-client:${GITHUB_RUN_NUMBER}
 
-      - name: Install Python
-        run: |
-          sudo apt-get install python3-setuptools
-
       - name: Install AWS CLI
         run: |
           sudo apt-get update
-          sudo apt-get install -y awscli
+          sudo apt-get install -y python3-setuptools
+          python3 -m pip install --user awscli
 
       - name: Copy Files to S3 Bucket
         run: |
