@@ -73,7 +73,7 @@ jobs:
       - name: Create SSH private key file
         run: |
           echo "${{secrets.SSH_KEY}}" > ssh_key.pem
-          chmod 600 /ssh_key.pem
+          chmod 600 ssh_key.pem
 
       - name: SSH into your EC2 and deploy backend
         run: |
