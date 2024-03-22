@@ -7,30 +7,30 @@ const Layout = () => (
     <nav>
       <ul>
         <li className="grow">
-          <Link to="http://localhost:3000/">Employees</Link>
+          <Link to="http://procecc.env.FRONTEND_URL/">Employees</Link>
         </li>
         <li>
-          <Link to="http://localhost:3000/create">
+          <Link to="http://procecc.env.FRONTEND_URL/create">
             <button type="button">Create Employee</button>
           </Link>
 
-          <Link to="http://localhost:3000/equipment">
+          <Link to="http://procecc.env.FRONTEND_URL/equipment">
             <button type="button">Manage inventory</button>
           </Link>
 
-          <Link to="http://localhost:3000/top-paid">
+          <Link to="http://procecc.env.FRONTEND_URL/top-paid">
             <button type="button">Top-Paid</button>
           </Link>
 
-          <Link to="http://localhost:3000/tools">
+          <Link to="http://procecc.env.FRONTEND_URL/tools">
             <button type="button">Tools</button>
           </Link>
 
-          <Link to='http://localhost:3000/games'>
+          <Link to='http://procecc.env.FRONTEND_URL/games'>
             <button type="button">Games</button>
           </Link>
 
-          <Link to='http://localhost:3000/divisions'>
+          <Link to='http://procecc.env.FRONTEND_URL/divisions'>
             <button type="button">Divisions</button>
           </Link>
 

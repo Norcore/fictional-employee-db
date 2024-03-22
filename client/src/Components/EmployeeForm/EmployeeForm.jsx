@@ -56,7 +56,7 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
 
     // PATCH request
     try {
-      const response = await fetch(`http://localhost:3001/api/employees/${employee._id}`, {
+      const response = await fetch(`http://procecc.env.BACKEND_URL/api/employees/${employee._id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -109,7 +109,7 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
   // Fetch equipment
   const fetchAvailableEquipment = async () => {
     try {
-      const response = await fetch('http://localhost:3001/equipment');
+      const response = await fetch('http://procecc.env.BACKEND_URL/equipment');
       const data = await response.json();
       setAvailableEquipment(data);
     } catch (error) {
@@ -120,7 +120,7 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
   // Fetch brands
   const fetchAvailableBrands = async () => {
     try {
-      const response = await fetch('http://localhost:3001/brands');
+      const response = await fetch('http://procecc.env.BACKEND_URL/brands');
       const data = await response.json();
       setAvailableBrands(data);
     } catch (error) {
@@ -132,7 +132,7 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
   // Fetch divisions
   const fetchDivisions = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/divisions')
+      const response = await fetch('http://procecc.env.BACKEND_URL/api/divisions')
       const data = await response.json();
       setAvailableDivisions(data);
 
@@ -143,7 +143,7 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
 
   const fetchGames = async () => {
     try {
-      const response = await fetch('http://localhost:3001/games-list');
+      const response = await fetch('http://procecc.env.BACKEND_URL/games-list');
       const data = await response.json();
       setGames(data);
 
@@ -153,7 +153,7 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
   };
 
   const fetchTools = async () => {
-    fetch('http://localhost:3001/tools')
+    fetch('http://procecc.env.BACKEND_URL/tools')
     .then(response => response.json())
     .then(data => setTools(data))
     .catch(error => console.error("Failed to fetch tools: ", error))

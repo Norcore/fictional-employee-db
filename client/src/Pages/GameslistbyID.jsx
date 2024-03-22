@@ -10,7 +10,7 @@ const GameslistbyID = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:3001/games-list/${id}`)
+        fetch(`http://procecc.env.BACKEND_URL/games-list/${id}`)
             .then(response => response.json())
             .then(data => setDisplayedGame(data))
             .then(setIsLoading(false))

@@ -8,7 +8,7 @@ const Tools = () => {
   const [toolFilter, setToolFilter] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:3001/tools?filter=${toolFilter}`)
+    fetch(`http://procecc.env.BACKEND_URL/tools?filter=${toolFilter}`)
       .then(response => response.json())
       .then(data => setAvailableTools(data))
       .catch(error => console.error("Error fetching tools: ", error))
@@ -28,7 +28,7 @@ const Tools = () => {
 
 
   const handleNewTool = () => {
-    fetch('http://localhost:3001/tools', {
+    fetch('http://procecc.env.BACKEND_URL/tools', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -79,7 +79,7 @@ const Tools = () => {
         return (
           <li key={tool._id}>
             Name: {tool.name} - Weight: {tool.weight}
-            <Link to={`http://localhost:3000/tools/${tool._id}`}>
+            <Link to={`http://procecc.env.FRONTEND_URL/tools/${tool._id}`}>
             <button type="button">Show More</button>
             </Link>
           </li>

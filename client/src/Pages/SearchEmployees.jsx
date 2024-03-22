@@ -11,7 +11,7 @@ const SearchEmployees = () => {
 
     // GET employees
     useEffect(() => {
-        fetch(`http://localhost:3001/api/employees/candidates?filter=${filterName}`)
+        fetch(`http://procecc.env.BACKEND_URL/api/employees/candidates?filter=${filterName}`)
         .then(response => response.json())
         .then(data => setEmployees(data))
         .then(setIsLoading(false))
@@ -30,7 +30,7 @@ const SearchEmployees = () => {
         console.log("Click action:", employee);
 
         // hanyadik sor, hova kattintok
-        fetch(`http://localhost:3001/api/employees/similaremployees?position=${employee.position}&level=${employee.level}`)
+        fetch(`http://procecc.env.BACKEND_URL/api/employees/similaremployees?position=${employee.position}&level=${employee.level}`)
         .then(response => response.json())
         .then(data => setEmployees(data))
         .catch(error => console.error("Error fetching similar employees: ", error))

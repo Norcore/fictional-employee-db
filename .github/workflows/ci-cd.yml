@@ -55,4 +55,28 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
 
+      - name: Get runner IP address
+        id: ip
+        uses: haythem/public-ip@v1.2
+
+      - name: Whitelist runner IP address
+        run: |
+          aws ec2 authorize-security-group-ingress \
+            --group-id ${{secrets.AWS_EC2_SG}} \
+            --protocol tcp \
+            --port 22 \
+            --cidr ${{ steps.ip.outputs.ipv4 }}/32
+
+      - name: SSH into your EC2 and deploy backend
+        run: |
+          ssh -i ${{secrets.SSH_KEY}} ec2-user@${{secrets.BACKEND_URL}} 'bash -s' < deploy.sh
+
+      - name: Revoke runner IP address
+        run: |
+          aws ec2 revoke-security-group-ingress \
+            --group-id ${{secrets.AWS_EC2_SG}} \
+            --protocol tcp \
+            --port 22 \
+            --cidr ${{ steps.ip.outputs.ipv4 }}/32
+
       # Add more steps for deploying to EC2 or other actions as needed

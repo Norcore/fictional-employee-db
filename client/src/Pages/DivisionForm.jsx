@@ -19,7 +19,7 @@ const DivisionForm = () => {
 
     // Display edited country
     useEffect(() => {
-        fetch(`http://localhost:3001/api/divisions/${id}`)
+        fetch(`http://procecc.env.BACKEND_URL/api/divisions/${id}`)
         .then(response => response.json())
         .then(data => setDisplayedDivision(data))
         .then(setIsLoading(false))
@@ -46,7 +46,7 @@ const DivisionForm = () => {
 
     // Fetch boss candidates
     useEffect(() => {
-        fetch('http://localhost:3001/api/employees/candidates')
+        fetch('http://procecc.env.BACKEND_URL/api/employees/candidates')
             .then(response => response.json())
             .then(data => setAvailableBosses(data))
             .catch(error => console.error("Failed to fetch bosses: ", error))
@@ -66,7 +66,7 @@ const DivisionForm = () => {
         };
 
         try {
-            await fetch(`http://localhost:3001/api/divisions/${id}`, {
+            await fetch(`http://procecc.env.BACKEND_URL/api/divisions/${id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ const DivisionForm = () => {
             });
 
              
-                navigate('http://localhost:3000/divisions');
+                navigate('http://procecc.env.FRONTEND_URL/divisions');
             // }
         } catch (error) {
             console.error("Couldn't update division: ", error);

@@ -8,7 +8,7 @@ const DivisionDetails = () => {
     const {id} = useParams();
 
     useEffect(() => {
-        fetch(`http://localhost:3001/api/divisions/${id}/members`)
+        fetch(`http://procecc.env.BACKEND_URL/api/divisions/${id}/members`)
         .then(response => response.json())
         .then(data => setDisplayedDivision(data))
         .catch(error => console.error("Error while fetching: ", error))

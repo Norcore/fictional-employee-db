@@ -16,7 +16,7 @@ const DivisionCreate = () => {
 
     // Fetch boss candidates
     useEffect(() => {
-        fetch('http://localhost:3001/api/employees/candidates')
+        fetch('http://procecc.env.BACKEND_URL/api/employees/candidates')
             .then(response => response.json())
             .then(data => setAvailableBosses(data))
             .catch(error => console.error("Failed to fetch bosses: ", error))
@@ -36,7 +36,7 @@ const DivisionCreate = () => {
         try {
 
 
-            await fetch('http://localhost:3001/api/divisions', {
+            await fetch('http://procecc.env.BACKEND_URL/api/divisions', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

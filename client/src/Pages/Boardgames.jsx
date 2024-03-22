@@ -8,7 +8,7 @@ const Boardgames = () => {
     const [gamePlayers, setGamePlayers] = useState("");
 
     const addGame = () => {
-        fetch('http://localhost:3001/games', {
+        fetch('http://procecc.env.BACKEND_URL/games', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -51,7 +51,7 @@ const Boardgames = () => {
                 onChange={handleGamePlayers}></input>
 
             <button type="button" onClick={addGame}>Add Game</button>
-            <Link to='http://localhost:3000/games-list'>
+            <Link to='http://procecc.env.FRONTEND_URL/games-list'>
                 <button type="button">Show Games</button>
             </Link>
         </div>

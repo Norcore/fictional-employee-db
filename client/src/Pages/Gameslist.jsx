@@ -9,7 +9,7 @@ export const Gameslist = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:3001/games-list?maxPlayers=${playerCount}`)
+        fetch(`http://procecc.env.BACKEND_URL/games-list?maxPlayers=${playerCount}`)
         .then(response => response.json())
         .then(data => setAvailableGames(data))
         .catch(error => error.console("Error fetching games: ", error))
@@ -38,7 +38,7 @@ export const Gameslist = () => {
                     <tr>
                         <td>{games.name}</td>
                         <td>{games.maxPlayers}</td>
-                        <Link to={`http://localhost:3000/games-list/${games._id}`}>
+                        <Link to={`http://procecc.env.FRONTEND_URL/games-list/${games._id}`}>
                         <button type="button">Show More</button>
                         
                         </Link>

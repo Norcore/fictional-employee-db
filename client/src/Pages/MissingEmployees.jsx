@@ -4,7 +4,7 @@ const MissingEmployees = () => {
     const [missingEmployees, setMissingEmployees] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3001/api/employees/missing')
+        fetch('http://procecc.env.BACKEND_URL/api/employees/missing')
             .then((response) => response.json())
             .then((data) => setMissingEmployees(data))
             .catch((error) => console.error("Error fetching missing employees:", error))

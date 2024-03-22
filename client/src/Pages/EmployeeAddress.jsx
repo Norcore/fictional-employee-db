@@ -19,7 +19,7 @@ const EmployeeAddress = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:3001/employee/${id}/address`)
+        fetch(`http://procecc.env.BACKEND_URL/employee/${id}/address`)
             .then(response => response.json())
             .then(data => setDisplayedAddress(data))
             .then(setIsLoading(false))
@@ -57,7 +57,7 @@ const EmployeeAddress = () => {
 
 
         try {
-            const response = fetch(`http://localhost:3001/employee/${id}/address`, {
+            const response = fetch(`http://procecc.env.BACKEND_URL/employee/${id}/address`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const EmployeeAddress = () => {
                     address: updatedAddress,
                 }));
                 setIsEditing(false);
-                navigate('http://localhost:3000/');
+                navigate('http://procecc.env.FRONTEND_URL/');
             }
 
         } catch (error) {

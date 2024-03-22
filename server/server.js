@@ -14,7 +14,7 @@ const DivisionModel = require('./db/division.model');
 
 
 const MONGO_URI = process.env.MONGO_URI;
-const FRONTEND_URL= procecc.env.FRONTEND_URL;
+const BACKEND_URL= procecc.env.BACKEND_URL;
 const PORT = process.env.PORT || 3001;
 
 if (!MONGO_URI) {
@@ -36,7 +36,7 @@ app.use(cors({
 
 
 // Display division members
-app.get('/api/divisions/:id/members', async (req, res) => {
+app.get(`${BACKEND_URL}/api/divisions/:id/members`, async (req, res) => {
   try {
     const divisionId = req.params.id;
 
@@ -50,7 +50,7 @@ app.get('/api/divisions/:id/members', async (req, res) => {
 });
 
 // PATCH division
-app.patch('/api/divisions/:id', async (req, res) => {
+app.patch(`${BACKEND_URL}/api/divisions/:id`, async (req, res) => {
   try {
     const { id } = req.params;
     const { name, boss, budget, country, city } = req.body;
@@ -80,7 +80,7 @@ app.patch('/api/divisions/:id', async (req, res) => {
 
 
 // GET division by ID
-app.get('/api/divisions/:id', async (req, res) => {
+app.get(`${BACKEND_URL}/api/divisions/:id`, async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -94,7 +94,7 @@ app.get('/api/divisions/:id', async (req, res) => {
 });
 
 //GET similar employees
-app.get('/api/employees/similaremployees', async (req, res) => {
+app.get(`${BACKEND_URL}/api/employees/similaremployees`, async (req, res) => {
   try {
     const { level, position } = req.query;
     console.log(level);
@@ -110,7 +110,7 @@ app.get('/api/employees/similaremployees', async (req, res) => {
 });
 
 // GET candidates
-app.get('/api/employees/candidates', async (req, res) => {
+app.get(`${BACKEND_URL}/api/employees/candidates`, async (req, res) => {
   try {
     const { filter } = req.query;
     let candidates;
@@ -133,7 +133,7 @@ app.get('/api/employees/candidates', async (req, res) => {
 
 
 // GET divisions
-app.get('/api/divisions', async (req, res) => {
+app.get(`${BACKEND_URL}/api/divisions`, async (req, res) => {
   try {
     const divisions = await DivisionModel.find().populate('boss');
 
@@ -145,7 +145,7 @@ app.get('/api/divisions', async (req, res) => {
 });
 
 // POST new division
-app.post('/api/divisions', async (req, res) => {
+app.post(`${BACKEND_URL}/api/divisions`, async (req, res) => {
   try {
     const { name, boss, budget, country, city } = req.body;
 
@@ -168,7 +168,7 @@ app.post('/api/divisions', async (req, res) => {
 });
 
 // GET employee address
-app.get('/employee/:id/address', async (req, res) => {
+app.get(`${BACKEND_URL}/employee/:id/address`, async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -182,7 +182,7 @@ app.get('/employee/:id/address', async (req, res) => {
 });
 
 // PATCH employee address
-app.patch('/employee/:id/address', async (req, res) => {
+app.patch(`${BACKEND_URL}/employee/:id/address`, async (req, res) => {
   try {
     const { id } = req.params;
     const { country, city, street, zipCode } = req.body;
@@ -207,7 +207,7 @@ app.patch('/employee/:id/address', async (req, res) => {
 
 
 //GET Tools by ID
-app.get('/tools/:id', async (req, res) => {
+app.get(`${BACKEND_URL}/tools/:id`, async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -223,7 +223,7 @@ app.get('/tools/:id', async (req, res) => {
 });
 
 // GET board game by ID
-app.get('/games-list/:id', async (req, res) => {
+app.get(`${BACKEND_URL}/games-list/:id`, async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -236,7 +236,7 @@ app.get('/games-list/:id', async (req, res) => {
 });
 
 // POST new board game
-app.post('/games', async (req, res) => {
+app.post(`${BACKEND_URL}/games`, async (req, res) => {
   try {
     const { name, maxPlayers } = req.body;
 
@@ -256,7 +256,7 @@ app.post('/games', async (req, res) => {
 });
 
 // GET Board games
-app.get('/games-list', async (req, res) => {
+app.get(`${BACKEND_URL}/games-list`, async (req, res) => {
   try {
 
     const { maxPlayers } = req.query;
@@ -279,7 +279,7 @@ app.get('/games-list', async (req, res) => {
 
 
 // POST new kitten
-app.post('/api/kittens/:employeeId', async (req, res) => {
+app.post(`${BACKEND_URL}/api/kittens/:employeeId`, async (req, res) => {
   try {
     const { name, weight } = req.body;
     const { employeeId } = req.params;
@@ -308,7 +308,7 @@ app.post('/api/kittens/:employeeId', async (req, res) => {
 });
 
 // Display kittens
-app.get('/api/kittens/:employeeId', async (req, res) => {
+app.get(`${BACKEND_URL}/api/kittens/:employeeId`, async (req, res) => {
   try {
     const { employeeId } = req.params;
 
@@ -323,7 +323,7 @@ app.get('/api/kittens/:employeeId', async (req, res) => {
 
 
 // POST new tool
-app.post('/tools', async (req, res) => {
+app.post(`${BACKEND_URL}/tools`, async (req, res) => {
   try {
     const { name, weight } = req.body;
 
@@ -343,7 +343,7 @@ app.post('/tools', async (req, res) => {
 
 
 // Display tools
-app.get('/tools', async (req, res) => {
+app.get(`${BACKEND_URL}/tools`, async (req, res) => {
   try {
     const { filter } = req.query;
     let tools;
@@ -363,7 +363,7 @@ app.get('/tools', async (req, res) => {
 });
 
 // Display top-paid
-app.get('/top-paid', async (req, res) => {
+app.get(`${BACKEND_URL}/top-paid`, async (req, res) => {
   try {
     const topPaidEmployees = await EmployeeModel.find()
       .sort({ currentSalary: -1 })
@@ -376,7 +376,7 @@ app.get('/top-paid', async (req, res) => {
 });
 
 // Display superheroes
-app.get("/employees/superheroes", async (req, res) => {
+app.get(`${BACKEND_URL}/employees/superheroes`, async (req, res) => {
   try {
     const superheroEmployees = await EmployeeModel.find({ position: "Superhero" });
     return res.json(superheroEmployees);
@@ -387,7 +387,7 @@ app.get("/employees/superheroes", async (req, res) => {
 
 
 // GET all brands
-app.get('/brands', async (req, res) => {
+app.get(`${BACKEND_URL}/brands`, async (req, res) => {
   try {
     const brand = await FavoriteBrandModel.find();
     res.json(brand);
@@ -398,7 +398,7 @@ app.get('/brands', async (req, res) => {
 });
 
 // PATCH brand by ID
-app.patch('/brands/:id', async (req, res) => {
+app.patch(`${BACKEND_URL}/brands/:id`, async (req, res) => {
   try {
     const updatedBrand = await FavoriteBrandModel.findByIdAndUpdate(
       req.params.id,
@@ -418,7 +418,7 @@ app.patch('/brands/:id', async (req, res) => {
 
 
 // GET all equipment
-app.get("/equipment", async (req, res) => {
+app.get(`${BACKEND_URL}/equipment`, async (req, res) => {
   try {
     const equipment = await Equipment.find();
     res.json(equipment);
@@ -430,7 +430,7 @@ app.get("/equipment", async (req, res) => {
 });
 
 // DELETE equipment by ID
-app.delete("/equipment/:id", async (req, res) => {
+app.delete(`${BACKEND_URL}/equipment/:id`, async (req, res) => {
   try {
     const deletedEquipment = await Equipment.findByIdAndDelete(req.params.id);
     if (!deletedEquipment) {
@@ -445,7 +445,7 @@ app.delete("/equipment/:id", async (req, res) => {
 });
 
 // POST new equipment
-app.post("/equipment", async (req, res) => {
+app.post(`${BACKEND_URL}/equipment`, async (req, res) => {
   try {
     const { name, type, amount } = req.body;
 
@@ -465,7 +465,7 @@ app.post("/equipment", async (req, res) => {
 });
 
 // PATCH equipment by ID
-app.patch("/equipment/:id", async (req, res) => {
+app.patch(`${BACKEND_URL}/equipment/:id`, async (req, res) => {
   try {
     const updatedEquipment = await Equipment.findByIdAndUpdate(
       req.params.id,
@@ -484,7 +484,7 @@ app.patch("/equipment/:id", async (req, res) => {
 });
 
 // Display missing employees
-app.get('/api/employees/missing', async (req, res) => {
+app.get(`${BACKEND_URL}/api/employees/missing`, async (req, res) => {
   try {
     const missingEmployees = await EmployeeModel.find({ present: false });
     return res.json(missingEmployees);
@@ -494,7 +494,7 @@ app.get('/api/employees/missing', async (req, res) => {
 });
 
 // Search employees by name
-app.get("/employees/:search", async (req, res) => {
+app.get(`${BACKEND_URL}/employees/:search`, async (req, res) => {
 
   try {
     const searchQuery = req.params.search;
@@ -510,7 +510,7 @@ app.get("/employees/:search", async (req, res) => {
 
 
 // Sorting, filtering
-app.get("/api/employees/sorted", async (req, res) => {
+app.get(`${BACKEND_URL}/api/employees/sorted`, async (req, res) => {
   try {
     const { position, level, sortBy, sortDir } = req.query;
     console.log("Request query parameters:", req.query);
@@ -589,7 +589,7 @@ app.get("/api/employees/sorted", async (req, res) => {
 
 
 // Display employees
-app.get("/api/employees/", async (req, res) => {
+app.get(`${BACKEND_URL}/api/employees/`, async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 10;
   const skip = (page - 1) * 10;
@@ -603,13 +603,13 @@ app.get("/api/employees/", async (req, res) => {
   return res.json(employees);
 });
 
-app.get("/api/employees/:id", async (req, res) => {
+app.get(`${BACKEND_URL}/api/employees/:id`, async (req, res) => {
   const employee = await EmployeeModel.findById(req.params.id).populate({ path: 'favoriteBrand' }).populate({ path: 'division' }).populate({ path: 'favGame' }).populate("tools");
   return res.json(employee);
 });
 
 
-app.post("/api/employees/", async (req, res, next) => {
+app.post(`${BACKEND_URL}/api/employees/`, async (req, res, next) => {
   const employee = req.body;
 
   try {
@@ -623,7 +623,7 @@ app.post("/api/employees/", async (req, res, next) => {
 
 
 // Update employee presence
-app.patch('/api/employees/:id/missing', async (req, res) => {
+app.patch(`${BACKEND_URL}/api/employees/:id/missing`, async (req, res) => {
   try {
     const employee = await EmployeeModel.findOneAndUpdate(
       { _id: req.params.id },
@@ -637,7 +637,7 @@ app.patch('/api/employees/:id/missing', async (req, res) => {
 });
 
 
-app.patch("/api/employees/:id", async (req, res, next) => {
+app.patch(`${BACKEND_URL}/api/employees/:id`, async (req, res, next) => {
   try {
     const employee = await EmployeeModel.findOneAndUpdate(
       { _id: req.params.id },
@@ -650,7 +650,7 @@ app.patch("/api/employees/:id", async (req, res, next) => {
   }
 });
 
-app.delete("/api/employees/:id", async (req, res, next) => {
+app.delete(`${BACKEND_URL}/api/employees/:id`, async (req, res, next) => {
   try {
     const employee = await EmployeeModel.findById(req.params.id);
     const deleted = await employee.delete();
