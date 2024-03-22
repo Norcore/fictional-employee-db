@@ -1,10 +1,7 @@
 #!/bin/bash
 
-# Install Docker
 sudo apt update
 sudo apt install -y docker.io
-
-# Start the Docker service
 sudo service docker start
 
 # Add your user to the docker group to run Docker commands without sudo
