@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# Install Docker
+sudo yum update -y
+sudo yum install docker -y
+
+# Start the Docker service
+sudo service docker start
+
+# Add your user to the docker group to run Docker commands without sudo
+sudo usermod -aG docker $USER
+
 # Pull the latest Docker image from your Docker registry
 docker pull norcore/fictional-employee-db-server:${GITHUB_RUN_NUMBER}
 
