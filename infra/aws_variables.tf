@@ -37,3 +37,8 @@ variable "subnet_c_cidr" {
     type    = string
     default = "172.31.16.0/20"
 }
+
+variable "ec2_keyname" {
+    type = string
+    default = "euc1-keypair-rnorbi"
+}
