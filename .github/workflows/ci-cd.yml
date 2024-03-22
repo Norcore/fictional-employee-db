@@ -73,11 +73,11 @@ jobs:
       - name: Create SSH private key file
         run: |
           echo "${{secrets.SSH_KEY}}" > ssh_key.pem
-          chmod 600 ssh_key.pem
+          chmod 400 ssh_key.pem
 
       - name: SSH into your EC2 and deploy backend
         run: |
-          ssh -o StrictHostKeyChecking=no -i ssh_key.pem ubuntu@${{secrets.BACKEND_URL}} 'bash -s' < deploy.sh
+          ssh -vvv -o StrictHostKeyChecking=no -i ssh_key.pem ubuntu@${{secrets.BACKEND_URL}} 'bash -s' < deploy.sh
 
       - name: Revoke runner IP address
         run: |
