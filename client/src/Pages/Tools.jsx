@@ -11,7 +11,7 @@ const Tools = () => {
 
     // GET request /w filtering
     useEffect(() => {
-        fetch(`http://process.env.BACKEND_URL/tools?filter=${toolFilter}`)
+        fetch(`http://${process.env.BACKEND_URL}/tools?filter=${toolFilter}`)
             .then(response => response.json())
             .then(data => setAvailableTools(data))
             .catch(error => console.error("Failed to fetch tools: ", error))
@@ -21,7 +21,7 @@ const Tools = () => {
     // POST request
     const addTool = () => {
         try {
-            fetch('http://process.env.BACKEND_URL/tools', {
+            fetch(`http://${process.env.BACKEND_URL}/tools`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ const Tools = () => {
                                 <td>{tool.weight}</td>
 
                                 <td>
-                                    <Link to={`http://process.env.FRONTEND_URL/tools/${tool._id}`} >
+                                    <Link to={`http://${process.env.FRONTEND_URL}/tools/${tool._id}`} >
                                         <button type="button">Show More</button>
                                     </Link>
                                 </td>

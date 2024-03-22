@@ -16,7 +16,7 @@ const DivisionCreate = () => {
 
     // Fetch boss candidates
     useEffect(() => {
-        fetch('http://process.env.BACKEND_URL/api/employees/candidates')
+        fetch(`http://${process.env.BACKEND_URL}/api/employees/candidates`)
             .then(response => response.json())
             .then(data => setAvailableBosses(data))
             .catch(error => console.error("Failed to fetch bosses: ", error))
@@ -36,7 +36,7 @@ const DivisionCreate = () => {
         try {
 
 
-            await fetch('http://process.env.BACKEND_URL/api/divisions', {
+            await fetch(`http://${process.env.BACKEND_URL}/api/divisions`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

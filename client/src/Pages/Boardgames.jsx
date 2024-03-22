@@ -8,7 +8,7 @@ const Boardgames = () => {
     const [gamePlayers, setGamePlayers] = useState("");
 
     const addGame = () => {
-        fetch('http://process.env.BACKEND_URL/games', {
+        fetch(`http://${process.env.BACKEND_URL}/games`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -51,7 +51,7 @@ const Boardgames = () => {
                 onChange={handleGamePlayers}></input>
 
             <button type="button" onClick={addGame}>Add Game</button>
-            <Link to='http://process.env.FRONTEND_URL/games-list'>
+            <Link to={`http://${process.env.FRONTEND_URL}/games-list`}>
                 <button type="button">Show Games</button>
             </Link>
         </div>

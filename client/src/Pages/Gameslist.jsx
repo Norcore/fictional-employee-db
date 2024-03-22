@@ -9,7 +9,7 @@ export const Gameslist = () => {
 
 
     useEffect(() => {
-        fetch(`http://process.env.BACKEND_URL/games-list?maxPlayers=${playerCount}`)
+        fetch(`http://${process.env.BACKEND_URL}/games-list?maxPlayers=${playerCount}`)
         .then(response => response.json())
         .then(data => setAvailableGames(data))
         .catch(error => error.console("Error fetching games: ", error))
@@ -38,7 +38,7 @@ export const Gameslist = () => {
                     <tr>
                         <td>{games.name}</td>
                         <td>{games.maxPlayers}</td>
-                        <Link to={`http://process.env.FRONTEND_URL/games-list/${games._id}`}>
+                        <Link to={`http://${process.env.FRONTEND_URL}/games-list/${games._id}`}>
                         <button type="button">Show More</button>
                         
                         </Link>

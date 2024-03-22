@@ -8,7 +8,7 @@ const Tools = () => {
   const [toolFilter, setToolFilter] = useState("");
 
   useEffect(() => {
-    fetch(`http://process.env.BACKEND_URL/tools?filter=${toolFilter}`)
+    fetch(`http://${process.env.BACKEND_URL}/tools?filter=${toolFilter}`)
       .then(response => response.json())
       .then(data => setAvailableTools(data))
       .catch(error => console.error("Error fetching tools: ", error))
@@ -28,7 +28,7 @@ const Tools = () => {
 
 
   const handleNewTool = () => {
-    fetch('http://process.env.BACKEND_URL/tools', {
+    fetch(`http://${process.env.BACKEND_URL}/tools`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -79,7 +79,7 @@ const Tools = () => {
         return (
           <li key={tool._id}>
             Name: {tool.name} - Weight: {tool.weight}
-            <Link to={`http://process.env.FRONTEND_URL/tools/${tool._id}`}>
+            <Link to={`http://${process.env.FRONTEND_URL}/tools/${tool._id}`}>
             <button type="button">Show More</button>
             </Link>
           </li>
