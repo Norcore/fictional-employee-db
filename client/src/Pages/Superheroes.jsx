@@ -5,7 +5,7 @@ const Superheroes = () => {
     const [superheroes, setSuperheroes] = useState([]);
 
     useEffect(() => {
-        fetch(`http://procecc.env.BACKEND_URL/employees/superheroes`)
+        fetch(`http://process.env.BACKEND_URL/employees/superheroes`)
             .then(res => res.json())
             .then(data => {
                 setSuperheroes(data);

@@ -8,7 +8,7 @@ const Divisions = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://procecc.env.BACKEND_URL/api/divisions')
+        fetch('http://process.env.BACKEND_URL/api/divisions')
             .then(response => response.json())
             .then(data => setAvailableDivisions(data))
             .then(setIsLoading(false))
@@ -51,7 +51,7 @@ const Divisions = () => {
 
 
                                 <td>
-                                    <Link to={`http://procecc.env.FRONTEND_URL/divisions/${division._id}`}>
+                                    <Link to={`http://process.env.FRONTEND_URL/divisions/${division._id}`}>
                                         <button type="button">Edit Division</button>
                                     </Link>
 
@@ -59,7 +59,7 @@ const Divisions = () => {
 
 
                                 <td>
-                                <Link to={`http://procecc.env.FRONTEND_URL/divisions/${division._id}/details`}>
+                                <Link to={`http://process.env.FRONTEND_URL/divisions/${division._id}/details`}>
                                     <button type="button">Show more</button>
                                 </Link>
 
@@ -75,7 +75,7 @@ const Divisions = () => {
                 </tbody>
             </table>
 
-            <Link to={'http://procecc.env.FRONTEND_URL/divisions/create'}>
+            <Link to={'http://process.env.FRONTEND_URL/divisions/create'}>
                 <button type="button">Add new division</button>
             </Link>
 

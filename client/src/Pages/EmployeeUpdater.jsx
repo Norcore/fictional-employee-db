@@ -5,7 +5,7 @@ import EmployeeForm from "../Components/EmployeeForm";
 import Loading from "../Components/Loading";
 
 const updateEmployee = (employee) => {
-  return fetch(`http://procecc.env.BACKEND_URL/api/employees/${employee._id}`, {
+  return fetch(`http://process.env.BACKEND_URL/api/employees/${employee._id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -15,7 +15,7 @@ const updateEmployee = (employee) => {
 };
 
 const fetchEmployee = (id) => {
-  return fetch(`http://procecc.env.BACKEND_URL/api/employees/${id}`).then((res) => res.json());
+  return fetch(`http://process.env.BACKEND_URL/api/employees/${id}`).then((res) => res.json());
 };
 
 const EmployeeUpdater = () => {
@@ -40,7 +40,7 @@ const EmployeeUpdater = () => {
     updateEmployee(employee)
       .then(() => {
         setUpdateLoading(false);
-        navigate("http://procecc.env.FRONTEND_URL/");
+        navigate("http://process.env.FRONTEND_URL/");
       });
   };
 
@@ -53,7 +53,7 @@ const EmployeeUpdater = () => {
       employee={employee}
       onSave={handleUpdateEmployee}
       disabled={updateLoading}
-      onCancel={() => navigate("http://procecc.env.FRONTEND_URL/")}
+      onCancel={() => navigate("http://process.env.FRONTEND_URL/")}
     />
   );
 };
