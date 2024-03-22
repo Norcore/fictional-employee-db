@@ -42,6 +42,11 @@ jobs:
           docker build -t norcore/fictional-employee-db-client:${GITHUB_RUN_NUMBER} .
           docker push norcore/fictional-employee-db-client:${GITHUB_RUN_NUMBER}
 
+      - name: Install AWS CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y awscli
+
       - name: Copy Files to S3 Bucket
         run: |
           aws s3 cp client/build s3://my-s3-bucket-rnorbi --recursive
