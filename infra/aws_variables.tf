@@ -13,6 +13,11 @@ variable "project_name" {
     default = "fictional-employee-db"
 }
 
+variable "ami_id" {
+    type = string
+    default = "ami-023adaba598e661ac"
+}
+
 variable "vpc_id" {
     type    = string
     default = "vpc-0530f47401f40cea3"

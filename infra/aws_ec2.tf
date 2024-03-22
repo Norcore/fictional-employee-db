@@ -1,5 +1,5 @@
 resource "aws_instance" "fictional-employee-db_server" {
-  ami                         = "ami-023adaba598e661ac"
+  ami                         = "${var.ami_id}"
   associate_public_ip_address = true
   instance_type               = "t3.micro"
   key_name                    = "${var.ec2_keyname}"
