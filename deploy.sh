@@ -1,9 +1,4 @@
 #!/bin/bash
-sudo apt update
-sudo apt install -y docker.io
-sudo service docker start
-
-sudo usermod -aG docker $USER
 
 # Pull the latest Docker image from your Docker registry
 docker pull norcore/fictional-employee-db-server:${GITHUB_RUN_NUMBER}

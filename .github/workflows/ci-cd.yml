@@ -75,9 +75,13 @@ jobs:
           echo "${{secrets.SSH_KEY}}" > ssh_key.pem
           chmod 600 ssh_key.pem
 
-      - name: SSH into your EC2 and deploy backend
+      - name: SSH into your EC2 and install dependencies
         run: |
           ssh -vvv -o StrictHostKeyChecking=no -i ssh_key.pem ubuntu@${{secrets.BACKEND_URL}} 'bash -s' < deploy.sh
+
+      - name: SSH into your EC2 and Configure Dependencies
+        run: |
+          ssh -vvv -o StrictHostKeyChecking=no -i ssh_key.pem ubuntu@${{secrets.BACKEND_URL}} 'bash -s' < dependencies.sh
 
       - name: Revoke runner IP address
         run: |
