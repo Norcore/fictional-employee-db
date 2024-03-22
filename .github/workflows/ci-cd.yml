@@ -72,12 +72,12 @@ jobs:
 
       - name: Create SSH private key file
         run: |
-          echo "${{secrets.SSH_KEY}}" > ssh_key.pem
-          chmod 600 ssh_key.pem
+          echo "${{secrets.SSH_KEY}}" > ~/.ssh/ssh_key.pem
+          chmod 600 ~/.ssh/ssh_key.pem
 
       - name: SSH into your EC2 and deploy backend
         run: |
-          ssh -i ~/.ssh/id_ed25519 ec2-user@${{secrets.BACKEND_URL}} 'bash -s' < deploy.sh
+          ssh -i ~/.ssh/ssh_key.pem ec2-user@${{secrets.BACKEND_URL}} 'bash -s' < deploy.sh
 
       - name: Revoke runner IP address
         run: |
@@ -89,4 +89,4 @@ jobs:
 
       - name: Cleanup SSH key file
         run: |
-          rm ssh_key.pem
+          rm ~/.ssh/ssh_key.pem
