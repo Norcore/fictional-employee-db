@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Install Docker
-sudo yum update -y
-sudo yum install docker -y
+sudo apt update
+sudo apt install -y docker.io
 
 # Start the Docker service
 sudo service docker start
