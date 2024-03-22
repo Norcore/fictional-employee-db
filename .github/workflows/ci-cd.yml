@@ -81,7 +81,7 @@ jobs:
 
       - name: SSH into your EC2 and Deploy Backend
         run: |
-          ssh -vvv -o StrictHostKeyChecking=no -i ssh_key.pem ubuntu@${{secrets.BACKEND_URL}} 'bash -s' < deploy.sh
+          ssh -vvv -o StrictHostKeyChecking=no -o SendEnv=GITHUB_RUN_NUMBER -i ssh_key.pem ubuntu@${{secrets.BACKEND_URL}} 'bash -s' < deploy.sh
 
       - name: Revoke runner IP address
         run: |
