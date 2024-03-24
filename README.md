@@ -1,3 +1,20 @@
+# General information
+
+This project has multiple branches, they all have their README file, as the files and deployment may differ.
+
+# Information about the branches.
+
+Main branch is utilizing docker-compose to containerize both back and frontend.
+
+Aws-s3-static branch is utilizing AWS EC2 for backend, AWS S3 bucket for static frontend, and MongoDB atlas for DB (the README here is not updated yet).
+
+Jenkins and Jenkins-only-client branches were made for Jenkins freestyle project (or multibranch pipeline).
+
+Jenkins-deploy branch is made for "pipeline project".
+
+Kubernetes-minikube is utilizing and kubernetes minikube cluster.
+
+
 # To start
 
 ### .env file
