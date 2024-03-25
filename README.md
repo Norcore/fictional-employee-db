@@ -35,6 +35,11 @@ The AWS S3 bucket has to be public, and under the 'Properties' menu "Static webs
 
 Once the AWS EC2 is up and running, the network access has to be configured in MongoDB Atlas.
 Network Access -> Add IP Adress -> paste "ip/32".
+I've also created a database ahead of time called "fictional-employee-db" and use that DB as part of my connection string.
+
+There is also a file that's going to populate your DB with data. It's in populate/populate.js. Run this and if everything is set up it should successfully fill your DB with employees and tools and such.
+
+Keep in mind that if you don't create a DB ahead of time MongoDB might defaults to "test" db.
 
 # Troubleshooting tips
 
