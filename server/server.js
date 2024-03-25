@@ -28,7 +28,7 @@ app.use(express.json());
 
 // CORS middleware
 app.use(cors({
-  origin: FRONTEND_URL,
+  origin: `http://${FRONTEND_URL}`,
   methods: ["POST", "PATCH", "GET", "DELETE"],
   preflightContinue: false,
   optionsSuccessStatus: 204,
