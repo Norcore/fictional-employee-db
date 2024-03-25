@@ -21,11 +21,14 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Install Dependencies and Build Frontend
-        working-directory: client
-        run: |
-          npm install
-          npm run build
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build frontend
+        run: npm run build
+        env:
+          REACT_APP_BACKEND_URL: ${{ secrets.REACT_APP_BACKEND_URL }}
+          REACT_APP_FRONTEND_URL: ${{ secrets.REACT_APP_FRONTEND_URL }}
 
       - name: Docker Login
         run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_TOKEN}}
@@ -81,7 +84,7 @@ jobs:
 
       - name: SSH into your EC2 and Deploy Backend
         run: |
-          ssh -vvv -o StrictHostKeyChecking=no -o SendEnv=GITHUB_RUN_NUMBER -i ssh_key.pem ubuntu@${{secrets.REACT_APP_BACKEND_URL}} 'bash -s' < deploy.sh
+          ssh -vvv -o StrictHostKeyChecking=no -o SendEnv=GITHUB_RUN_NUMBER,MONGO_URI,REACT_APP_FRONTEND_URL,REACT_APP_BACKEND_URL -i ssh_key.pem ubuntu@${{secrets.REACT_APP_BACKEND_URL}} 'bash -s' < deploy.sh
 
       - name: Revoke runner IP address
         run: |
