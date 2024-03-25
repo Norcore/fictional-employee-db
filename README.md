@@ -2,29 +2,40 @@
 
 # General information
 
-It utilizes a custom jenkins build (it's the latest official version but I install some dependencies and set some permissions for jenkins user that's created by the official jenkins image), you can find the dockerfile in the jenkins folder.
+The frontend is hosted as a static website in an AWS S3 bucket, the backend is hosted on an AWS EC2 ubuntu 22.04 LTS, and the DB is MongoDB Atlas.
+
+# Requirements for Terraform
+
+Need to create a dynamoDB table (in this project this is called "fictional-employee-db", if you use a different name you will have to modify the reference in the main.tf file as well), 2 AWS S3 buckets (1 for the static website, and another to store the statefile).
 
 
-# Docker
+# Environment Variables/Secrets (Terraform)
 
-I've found attaching the socket to the containerized jenkins pretty handy, so I ran it like this: docker run -d -p 8080:8080 -p 50000:50000 -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home jenkins-with-nodejs
+See the variables.tf file.
+The bucket and dynamodb table names are explicitly named in main.tf, that might have to be updated as well.
 
+# Environment Variables/Secrets (Github)
 
-# Jenkins 
+AWS_ACCESS_KEY_ID
+AWS_EC2_SG (ID)
+AWS_REGION
+AWS_SECRET_ACCESS_KEY
+DOCKER_TOKEN
+DOCKER_USER
+MONGO_URI
+REACT_APP_BACKEND_URL (The IP of the AWS EC2 you created beforehand)
+REACT_APP_FRONTEND_URL (The address of the AWS S3 Bucket you created beforehand)
+SSH_KEY
 
-When jenkins is set up and running make sure to create the project as a "pipeline", and when configuring it specify the repository's branch (jenkins-deploy), as the other branches serve other test or deployment purposes.
+# AWS
 
-You will also have to set up the MONGO_URI environment variable under Dashboard -> Manage Jenkins -> Credentials menu, since this is being referenced in the Jenkinsfile, but also the backend and frontend.
+The AWS S3 bucket has to be public, and under the 'Properties' menu "Static website hosting" has to be enabled (Bucket hosting).
 
-In the Jenkinsfile, you will most likely have to edit the URL's in the test stages. I used my host machine's local IP due to how the jenkins container and the pet project's containers use 2 separate networks (this is working due to how the host machine's ports are exposed).
+# MongoDB Atlas
 
-If everything is set up the build, deployment, and db populate stages should all complete without any issues and you should be able to open the webpage at process.env.REACT_APP_FRONTEND_URL.
-
+Once the AWS EC2 is up and running, the network access has to be configured in MongoDB Atlas.
+Network Access -> Add IP Adress -> paste "ip/32".
 
 # Troubleshooting tips
 
-The most problems I've ran into were permission related. If you run into problems make sure to check that the user jenkins has the necessary dir and file permissions (such as ownership of the workspace you're creating, execute permission for docker-compose, etc.).
-
-If during building jenkins runs into permission issues that denies it access to the docker daemon/socket/services you may have to force the 'docker' group inside the jenkins container to have the same ID as the docker group outside the container.
-
-You can check the ID by running this command: cat /etc/group | grep docker
+If the Github action workflow (/.github/workflows/ci-cd.yml file) goes past "Whitelist runner IP address" but fails before "Revoke runner IP address" run "terraform plan" again and see if the security group has to be reset before the next run (what happens is the Runner gets whitelisted but since the revoke step does not happen the runner remains on the list. Tried to implement 'if conditions' here but they all failed, will have to investigate more).
