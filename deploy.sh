@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Pull the latest Docker image from your Docker registry
-docker pull norcore/fictional-employee-db-server:"${GITHUB_RUN_NUMBER}"
+docker pull norcore/fictional-employee-db-server:"${GITHUB_RUN_NUM}"
 
 # Run the Docker container with the newly pulled image
 docker run -d --name fictional-employee-db-server \
@@ -9,5 +9,5 @@ docker run -d --name fictional-employee-db-server \
            -e MONGO_URI="${MONGO_URI}" \
            -e REACT_APP_FRONTEND_URL="${REACT_APP_FRONTEND_URL}" \
            -e REACT_APP_BACKEND_URL="${REACT_APP_BACKEND_URL}" \
-           -e GITHUB_RUN_NUMBER="${GITHUB_RUN_NUMBER}" \
-           norcore/fictional-employee-db-server:"${GITHUB_RUN_NUMBER}"
+           -e GITHUB_RUN_NUM="${GITHUB_RUN_NUM}" \
+           norcore/fictional-employee-db-server:"${GITHUB_RUN_NUM}"
