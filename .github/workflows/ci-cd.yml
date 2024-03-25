@@ -21,11 +21,10 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build frontend
-        run: npm run build
+      - name: Install dependencies and build frontend
+        run: |
+          npm install
+          npm run build
         env:
           REACT_APP_BACKEND_URL: ${{ secrets.REACT_APP_BACKEND_URL }}
           REACT_APP_FRONTEND_URL: ${{ secrets.REACT_APP_FRONTEND_URL }}
