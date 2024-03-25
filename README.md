@@ -6,7 +6,7 @@ This project has multiple branches, they all have their README file, as the file
 
 Main branch is utilizing docker-compose to containerize both back and frontend.
 
-Aws-s3-static branch is utilizing AWS EC2 for backend, AWS S3 bucket for static frontend, and MongoDB atlas for DB (the README here is not updated yet).
+Aws-s3-static branch is utilizing AWS EC2 for backend, AWS S3 bucket for static frontend, and MongoDB atlas for DB.
 
 Jenkins and Jenkins-only-client branches were made for Jenkins freestyle project (or multibranch pipeline).
 
