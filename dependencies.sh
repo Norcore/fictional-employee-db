@@ -9,7 +9,7 @@ sudo service docker start
 sudo usermod -aG docker $USER
 
 # Ensure that SSH server is configured to accept GITHUB_RUN_NUMBER environment variable
-sudo sh -c 'echo "AcceptEnv GITHUB_RUN_NUMBER MONGO_URI" >> /etc/ssh/sshd_config'
+sudo sh -c 'echo "AcceptEnv MONGO_URI REACT_APP_FRONTEND_URL REACT_APP_BACKEND_URL" >> /etc/ssh/sshd_config'
 
 # Restart SSH service to apply the changes
 sudo systemctl restart sshd
