@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - aws-s3-static  # Change to your main branch name
+      - aws-s3-static
 
 jobs:
   build:
@@ -36,14 +36,14 @@ jobs:
       - name: Build Backend Docker Image
         working-directory: server
         run: |
-          docker build -t norcore/fictional-employee-db-server:${GITHUB_RUN_NUMBER} .
-          docker push norcore/fictional-employee-db-server:${GITHUB_RUN_NUMBER}
+          docker build -t norcore/fictional-employee-db-server:${GITHUB_RUN_ATTEMPT} .
+          docker push norcore/fictional-employee-db-server:${GITHUB_RUN_ATTEMPT}
 
       - name: Build Frontend Docker Image
         working-directory: client
         run: |
-          docker build -t norcore/fictional-employee-db-client:${GITHUB_RUN_NUMBER} .
-          docker push norcore/fictional-employee-db-client:${GITHUB_RUN_NUMBER}
+          docker build -t norcore/fictional-employee-db-client:${GITHUB_RUN_ATTEMPT} .
+          docker push norcore/fictional-employee-db-client:${GITHUB_RUN_ATTEMPT}
 
       - name: Install AWS CLI
         run: |
