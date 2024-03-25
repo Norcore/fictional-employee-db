@@ -11,7 +11,7 @@ const Tools = () => {
 
     // GET request /w filtering
     useEffect(() => {
-        fetch(`http://${process.env.REACT_APP_BACKEND_URL}/tools?filter=${toolFilter}`)
+        fetch(`http://${process.env.REACT_APP_BACKEND_URL}:3001/tools?filter=${toolFilter}`)
             .then(response => response.json())
             .then(data => setAvailableTools(data))
             .catch(error => console.error("Failed to fetch tools: ", error))
@@ -21,7 +21,7 @@ const Tools = () => {
     // POST request
     const addTool = () => {
         try {
-            fetch(`http://${process.env.REACT_APP_BACKEND_URL}/tools`, {
+            fetch(`http://${process.env.REACT_APP_BACKEND_URL}:3001/tools`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

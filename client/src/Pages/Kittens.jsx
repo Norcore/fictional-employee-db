@@ -11,7 +11,7 @@ const Kittens = () => {
 
     // Fetch kittens
     useEffect(() => {
-            fetch(`http://${process.env.REACT_APP_BACKEND_URL}/api/kittens/${employeeId}`)
+            fetch(`http://${process.env.REACT_APP_BACKEND_URL}:3001/api/kittens/${employeeId}`)
                 .then(response => response.json())
                 .then(data => setAvailableKittens(data))
                 .catch(error => console.error("Failed to fetch kittens: ", error))
@@ -21,7 +21,7 @@ const Kittens = () => {
 
     // Kitten POST request
     const addKitten = () => {
-        fetch(`http://${process.env.REACT_APP_BACKEND_URL}/api/kittens/${employeeId}`, {
+        fetch(`http://${process.env.REACT_APP_BACKEND_URL}:3001/api/kittens/${employeeId}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

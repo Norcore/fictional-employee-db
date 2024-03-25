@@ -19,7 +19,7 @@ const DivisionForm = () => {
 
     // Display edited country
     useEffect(() => {
-        fetch(`http://${process.env.REACT_APP_BACKEND_URL}/api/divisions/${id}`)
+        fetch(`http://${process.env.REACT_APP_BACKEND_URL}:3001/api/divisions/${id}`)
         .then(response => response.json())
         .then(data => setDisplayedDivision(data))
         .then(setIsLoading(false))
@@ -46,7 +46,7 @@ const DivisionForm = () => {
 
     // Fetch boss candidates
     useEffect(() => {
-        fetch(`http://${process.env.REACT_APP_BACKEND_URL}/api/employees/candidates`)
+        fetch(`http://${process.env.REACT_APP_BACKEND_URL}:3001/api/employees/candidates`)
             .then(response => response.json())
             .then(data => setAvailableBosses(data))
             .catch(error => console.error("Failed to fetch bosses: ", error))
@@ -66,7 +66,7 @@ const DivisionForm = () => {
         };
 
         try {
-            await fetch(`http://${process.env.REACT_APP_BACKEND_URL}/api/divisions/${id}`, {
+            await fetch(`http://${process.env.REACT_APP_BACKEND_URL}:3001/api/divisions/${id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ const DivisionForm = () => {
             });
 
              
-                navigate(`http://${process.env.REACT_APP_BACKEND_URL}/divisions`);
+                navigate(`http://${process.env.REACT_APP_BACKEND_URL}:3001/divisions`);
             // }
         } catch (error) {
             console.error("Couldn't update division: ", error);

@@ -9,7 +9,7 @@ export const Gameslist = () => {
 
 
     useEffect(() => {
-        fetch(`http://${process.env.REACT_APP_BACKEND_URL}/games-list?maxPlayers=${playerCount}`)
+        fetch(`http://${process.env.REACT_APP_BACKEND_URL}:3001/games-list?maxPlayers=${playerCount}`)
         .then(response => response.json())
         .then(data => setAvailableGames(data))
         .catch(error => error.console("Error fetching games: ", error))
