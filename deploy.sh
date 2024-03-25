@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Debugging: Print out the values of environment variables
+echo "MONGO_URI: ${MONGO_URI}"
+echo "REACT_APP_FRONTEND_URL: ${REACT_APP_FRONTEND_URL}"
+echo "REACT_APP_BACKEND_URL: ${REACT_APP_BACKEND_URL}"
+echo "GITHUB_RUN_NUM: ${GITHUB_RUN_NUM}"
+
 # Pull the latest Docker image from your Docker registry
 docker pull norcore/fictional-employee-db-server:"${GITHUB_RUN_NUM}"
 
