@@ -7,7 +7,14 @@ resource "aws_security_group" "ec2_security_group_rnorbi" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["84.0.255.119/32"]
+    cidr_blocks = ["${var.my_ip}"]
+  }
+
+  ingress {
+    from_port   = 3001
+    to_port     = 3001
+    protocol    = "tcp"
+    cidr_blocks = ["${var.my_ip}"]
   }
 
   egress {

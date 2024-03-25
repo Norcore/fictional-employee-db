@@ -13,6 +13,11 @@ variable "project_name" {
     default = "fictional-employee-db"
 }
 
+variable "my_ip" {
+    type = string
+    default = "84.0.255.119/32"
+}
+
 variable "ami_id" {
     type = string
     default = "ami-023adaba598e661ac"
