@@ -35,7 +35,7 @@ const EmployeeTable = ({ employees, onDelete, onCheckBoxChange, checkboxToggled,
 
     // Fetching database and passing queries
     const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}:3001/api/employees/sorted?position=${filterPosition}&level=${filterLevel}&sortBy=${sortedBy}&sortDir=${sortDirection}`
+      `${process.env.REACT_APP_BACKEND_URL}/api/employees/sorted?position=${filterPosition}&level=${filterLevel}&sortBy=${sortedBy}&sortDir=${sortDirection}`
     );
 
     const data = await response.json();

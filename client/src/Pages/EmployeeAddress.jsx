@@ -19,7 +19,7 @@ const EmployeeAddress = () => {
 
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_BACKEND_URL}:3001/employee/${id}/address`)
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/employee/${id}/address`)
             .then(response => response.json())
             .then(data => setDisplayedAddress(data))
             .then(setIsLoading(false))
@@ -57,7 +57,7 @@ const EmployeeAddress = () => {
 
 
         try {
-            const response = fetch(`${process.env.REACT_APP_BACKEND_URL}:3001/employee/${id}/address`, {
+            const response = fetch(`${process.env.REACT_APP_BACKEND_URL}/employee/${id}/address`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',

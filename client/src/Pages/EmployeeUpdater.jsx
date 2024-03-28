@@ -5,7 +5,7 @@ import EmployeeForm from "../Components/EmployeeForm";
 import Loading from "../Components/Loading";
 
 const updateEmployee = (employee) => {
-  return fetch(`${process.env.REACT_APP_BACKEND_URL}:3001/api/employees/${employee._id}`, {
+  return fetch(`${process.env.REACT_APP_BACKEND_URL}/api/employees/${employee._id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -15,7 +15,7 @@ const updateEmployee = (employee) => {
 };
 
 const fetchEmployee = (id) => {
-  return fetch(`${process.env.REACT_APP_BACKEND_URL}:3001/api/employees/${id}`).then((res) => res.json());
+  return fetch(`${process.env.REACT_APP_BACKEND_URL}/api/employees/${id}`).then((res) => res.json());
 };
 
 const EmployeeUpdater = () => {
@@ -40,7 +40,7 @@ const EmployeeUpdater = () => {
     updateEmployee(employee)
       .then(() => {
         setUpdateLoading(false);
-        navigate(`${process.env.REACT_APP_BACKEND_URL}:3001/`);
+        navigate(`${process.env.REACT_APP_BACKEND_URL}/`);
       });
   };
 
@@ -53,7 +53,7 @@ const EmployeeUpdater = () => {
       employee={employee}
       onSave={handleUpdateEmployee}
       disabled={updateLoading}
-      onCancel={() => navigate(`${process.env.REACT_APP_BACKEND_URL}:3001/`)}
+      onCancel={() => navigate(`${process.env.REACT_APP_BACKEND_URL}/`)}
     />
   );
 };

@@ -8,7 +8,7 @@ const Divisions = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_BACKEND_URL}:3001/api/divisions`)
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/divisions`)
             .then(response => response.json())
             .then(data => setAvailableDivisions(data))
             .then(setIsLoading(false))
@@ -75,7 +75,7 @@ const Divisions = () => {
                 </tbody>
             </table>
 
-            <Link to={`${process.env.REACT_APP_BACKEND_URL}:3001/divisions/create`}>
+            <Link to={`${process.env.REACT_APP_BACKEND_URL}/divisions/create`}>
                 <button type="button">Add new division</button>
             </Link>
 

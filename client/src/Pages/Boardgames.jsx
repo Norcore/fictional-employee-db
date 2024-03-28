@@ -8,7 +8,7 @@ const Boardgames = () => {
     const [gamePlayers, setGamePlayers] = useState("");
 
     const addGame = () => {
-        fetch(`${process.env.REACT_APP_BACKEND_URL}:3001/games`, {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/games`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

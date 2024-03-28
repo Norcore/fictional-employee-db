@@ -8,7 +8,7 @@ const Tools = () => {
   const [toolFilter, setToolFilter] = useState("");
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BACKEND_URL}:3001/tools?filter=${toolFilter}`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/tools?filter=${toolFilter}`)
       .then(response => response.json())
       .then(data => setAvailableTools(data))
       .catch(error => console.error("Error fetching tools: ", error))
@@ -28,7 +28,7 @@ const Tools = () => {
 
 
   const handleNewTool = () => {
-    fetch(`${process.env.REACT_APP_BACKEND_URL}:3001/tools`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/tools`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

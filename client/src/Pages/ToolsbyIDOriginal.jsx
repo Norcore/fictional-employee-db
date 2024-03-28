@@ -9,7 +9,7 @@ const ToolsbyID = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_BACKEND_URL}:3001/tools/${id}`)
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/tools/${id}`)
         .then(response => response.json())
         .then(data => setDisplayedTool(data))
         .catch(error => console.error("Failed to fetch tool: ", error))

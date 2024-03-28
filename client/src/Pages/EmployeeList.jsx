@@ -3,17 +3,17 @@ import Loading from "../Components/Loading";
 import EmployeeTable from "../Components/EmployeeTable";
 
 const fetchEmployees = () => {
-  return fetch(`${process.env.REACT_APP_BACKEND_URL}:3001/api/employees`).then((res) => res.json());
+  return fetch(`${process.env.REACT_APP_BACKEND_URL}/api/employees`).then((res) => res.json());
 };
 
 const deleteEmployee = (id) => {
-  return fetch(`${process.env.REACT_APP_BACKEND_URL}:3001/api/employees/${id}`, { method: "DELETE" }).then((res) =>
+  return fetch(`${process.env.REACT_APP_BACKEND_URL}/api/employees/${id}`, { method: "DELETE" }).then((res) =>
     res.json()
   );
 };
 
   const updateEmployeePresence = (id, present) => {
-    return fetch(`${process.env.REACT_APP_BACKEND_URL}:3001/api/employees/${id}/missing`, {
+    return fetch(`${process.env.REACT_APP_BACKEND_URL}/api/employees/${id}/missing`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
