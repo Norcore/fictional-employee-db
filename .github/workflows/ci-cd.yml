@@ -30,21 +30,6 @@ jobs:
           REACT_APP_BACKEND_URL: ${{ secrets.REACT_APP_BACKEND_URL }}
           REACT_APP_FRONTEND_URL: ${{ secrets.REACT_APP_FRONTEND_URL }}
 
-      - name: Docker Login
-        run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_TOKEN}}
-
-      - name: Build Backend Docker Image
-        working-directory: server
-        run: |
-          docker build -t norcore/fictional-employee-db-server:${GITHUB_RUN_NUMBER} .
-          docker push norcore/fictional-employee-db-server:${GITHUB_RUN_NUMBER}
-
-      - name: Build Frontend Docker Image
-        working-directory: client
-        run: |
-          docker build -t norcore/fictional-employee-db-client:${GITHUB_RUN_NUMBER} .
-          docker push norcore/fictional-employee-db-client:${GITHUB_RUN_NUMBER}
-
       - name: Install AWS CLI
         run: |
           sudo apt-get update
@@ -60,45 +45,3 @@ jobs:
       - name: Copy Files to S3 Bucket
         run: |
           aws s3 cp client/build s3://my-s3-bucket-rnorbi --recursive
-
-      - name: Get runner IP address
-        id: ip
-        uses: haythem/public-ip@v1.2
-
-      - name: Whitelist runner IP address
-        run: |
-          aws ec2 authorize-security-group-ingress \
-            --group-id ${{secrets.AWS_EC2_SG}} \
-            --protocol tcp \
-            --port 22 \
-            --cidr ${{ steps.ip.outputs.ipv4 }}/32
-
-      - name: Create SSH private key file
-        run: |
-          echo "${{secrets.SSH_KEY}}" > ssh_key.pem
-          chmod 600 ssh_key.pem
-
-      - name: SSH into your EC2 and Configure Dependencies
-        run: |
-          ssh -vvv -o StrictHostKeyChecking=no -i ssh_key.pem ubuntu@${{secrets.REACT_APP_BACKEND_URL}} 'bash -s' < dependencies.sh
-
-      - name: SSH into your EC2 and Deploy Backend
-        env:
-          REACT_APP_BACKEND_URL: ${{ secrets.REACT_APP_BACKEND_URL }}
-          REACT_APP_FRONTEND_URL: ${{ secrets.REACT_APP_FRONTEND_URL }}
-          MONGO_URI: ${{ secrets.MONGO_URI }}
-          GITHUB_RUN_NUM: ${{ github.run_number }}
-        run: |
-          ssh -v -o StrictHostKeyChecking=no -o SendEnv="GITHUB_RUN_NUM MONGO_URI REACT_APP_FRONTEND_URL REACT_APP_BACKEND_URL" -i ssh_key.pem ubuntu@${{ env.REACT_APP_BACKEND_URL }} 'bash -s' < deploy.sh
-
-      - name: Revoke runner IP address
-        run: |
-          aws ec2 revoke-security-group-ingress \
-            --group-id ${{secrets.AWS_EC2_SG}} \
-            --protocol tcp \
-            --port 22 \
-            --cidr ${{ steps.ip.outputs.ipv4 }}/32
-
-      - name: Cleanup SSH key file
-        run: |
-          rm ssh_key.pem
