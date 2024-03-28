@@ -35,7 +35,7 @@ const EmployeeTable = ({ employees, onDelete, onCheckBoxChange, checkboxToggled,
 
     // Fetching database and passing queries
     const response = await fetch(
-      `http://${process.env.REACT_APP_BACKEND_URL}:3001/api/employees/sorted?position=${filterPosition}&level=${filterLevel}&sortBy=${sortedBy}&sortDir=${sortDirection}`
+      `${process.env.REACT_APP_BACKEND_URL}:3001/api/employees/sorted?position=${filterPosition}&level=${filterLevel}&sortBy=${sortedBy}&sortDir=${sortDirection}`
     );
 
     const data = await response.json();
@@ -68,7 +68,7 @@ const EmployeeTable = ({ employees, onDelete, onCheckBoxChange, checkboxToggled,
       await onDelete(employeeId);
       setEmployeeToDelete(employeeId);
       setShowDeleteDialog(false);
-      navigate(`http://${process.env.REACT_APP_FRONTEND_URL}`);
+      navigate(`${process.env.REACT_APP_FRONTEND_URL}`);
 
     } catch (error) {
       console.error('Error deleting employee: ', error);
@@ -80,7 +80,7 @@ const EmployeeTable = ({ employees, onDelete, onCheckBoxChange, checkboxToggled,
   const onDeleteCancel = () => {
     setShowDeleteDialog(false);
     setEmployeeToDelete(null);
-    navigate(`http://${process.env.REACT_APP_FRONTEND_URL}`);
+    navigate(`${process.env.REACT_APP_FRONTEND_URL}`);
   }
 
 
@@ -107,15 +107,15 @@ const EmployeeTable = ({ employees, onDelete, onCheckBoxChange, checkboxToggled,
             <td style={{background: employee.favoriteColor}}>{employee.favGame ? employee.favGame.maxPlayers : ""}</td>
             <td style={{background: employee.favoriteColor}}>
               
-              <Link to={`http://${process.env.REACT_APP_FRONTEND_URL}/update/${employee._id}`}>
+              <Link to={`${process.env.REACT_APP_FRONTEND_URL}/update/${employee._id}`}>
                 <button type="button">Update</button>
               </Link>
 
-              <Link to={`http://${process.env.REACT_APP_FRONTEND_URL}/kittens/${employee._id}`}>
+              <Link to={`${process.env.REACT_APP_FRONTEND_URL}/kittens/${employee._id}`}>
                 <button type="button">Kittens</button>
               </Link>
 
-              <Link to={`http://${process.env.REACT_APP_FRONTEND_URL}/employee/${employee._id}/address`}>
+              <Link to={`${process.env.REACT_APP_FRONTEND_URL}/employee/${employee._id}/address`}>
                 <button type="button">Address</button>
               </Link>
 

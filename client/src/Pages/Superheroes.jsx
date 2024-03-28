@@ -5,7 +5,7 @@ const Superheroes = () => {
     const [superheroes, setSuperheroes] = useState([]);
 
     useEffect(() => {
-        fetch(`http://${process.env.REACT_APP_BACKEND_URL}:3001/employees/superheroes`)
+        fetch(`${process.env.REACT_APP_BACKEND_URL}:3001/employees/superheroes`)
             .then(res => res.json())
             .then(data => {
                 setSuperheroes(data);
